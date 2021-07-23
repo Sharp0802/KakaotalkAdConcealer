@@ -20,6 +20,13 @@ namespace KakaotalkAdConcealer.Gui
             Items.Add(item);
             return this;
         }
+
+        public ContextMenuBuilder AddDropdown(out ToolStripDropDownItem item)
+        {
+            item = new ToolStripMenuItem();
+            Items.Add(item);
+            return this;
+        }
         
         public ContextMenuStrip Build()
         {
