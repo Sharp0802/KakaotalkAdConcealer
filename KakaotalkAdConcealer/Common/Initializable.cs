@@ -27,6 +27,6 @@ namespace KakaotalkAdConcealer.Common
         }
 
         public T Value { get; }
-        public Action<T> Initializer { get; }
+        private Action<T> Initializer { get; }
     }
 }

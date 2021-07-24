@@ -10,7 +10,7 @@ namespace KakaotalkAdConcealer.Gui
     {
         private static CultureInfo[] Cache { get; set; }
 
-        public static CultureInfo[] GetAvailableCultures()
+        public static IEnumerable<CultureInfo> GetAvailableCultures()
         {
             return Cache ??= GetAvailableCulturesWithoutCache().ToArray();
             
