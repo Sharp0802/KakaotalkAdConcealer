@@ -11,7 +11,7 @@ namespace KakaotalkAdConcealer
             using var mutex = new Mutex(true, Resources.AppName, out var @new);
             if (@new)
             {
-                new App().Startup();
+                using var _ = App.Create();
                 Application.Run();
                 mutex.ReleaseMutex();
             }
