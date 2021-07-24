@@ -6,7 +6,7 @@ using KakaotalkAdConcealer.Properties;
 
 namespace KakaotalkAdConcealer.Gui
 {
-    public class LanguageExtension
+    public static class LanguageExtension
     {
         private static CultureInfo[] Cache { get; set; }
 
@@ -29,11 +29,17 @@ namespace KakaotalkAdConcealer.Gui
                     {
                         supported = false;
                     }
-
                     if (supported)
                         yield return culture;
                 }
             }
+        }
+
+        public static string ToISOCode(this CultureInfo info)
+        {
+            return info.Equals(CultureInfo.InvariantCulture) 
+                ? "default (eng)" 
+                : info.ThreeLetterISOLanguageName;
         }
     }
 }
