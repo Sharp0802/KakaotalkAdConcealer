@@ -26,7 +26,7 @@ namespace KakaotalkAdConcealer.Concealer
             {
                 while (!token.IsCancellationRequested)
                 {
-                    RemoveAllEmbedAds(token);
+                    RemoveAllEmbedAds();
                     RemovePopupAd();
                     Task.Delay(UpdateRate, token).Wait(token);
                 }
@@ -36,50 +36,48 @@ namespace KakaotalkAdConcealer.Concealer
         public static void RemovePopupAd()
         {
             var popUp = Win32.FindWindow(IntPtr.Zero, IntPtr.Zero, null, "");
-            if (Win32.GetParent(popUp) != IntPtr.Zero ||
-                !Win32.GetClassName(popUp).Contains("RichPopWnd"))
-                return;
-
-            var rect = Win32.GetWindowRect(popUp);
-            if (rect.Right - rect.Left is 300 && rect.Bottom - rect.Top is 150)
-                Win32.SendMessage(popUp, WmClose);
-        }
-
-        public static void RemoveAllEmbedAds(CancellationToken token)
-        {
-            foreach (var kakaotalk in Process.GetProcessesByName("kakaotalk"))
+            while (popUp != IntPtr.Zero)
             {
-                if (token.IsCancellationRequested)
-                    break;
-                RemoveEmbedAds(kakaotalk, token);
+                if (Win32.GetParent(popUp) != IntPtr.Zero ||
+                    !Win32.GetClassName(popUp).Contains("RichPopWnd"))
+                    return;
+
+                var rect = Win32.GetWindowRect(popUp);
+                if (rect.Right - rect.Left is 300 && rect.Bottom - rect.Top is 150)
+                    Win32.SendMessage(popUp, WmClose);
             }
         }
 
-        public static void RemoveEmbedAds(Process process, CancellationToken token)
+        public static void RemoveAllEmbedAds()
+        {
+            foreach (var kakaotalk in Process.GetProcessesByName("kakaotalk"))
+            {
+                RemoveEmbedAds(kakaotalk);
+            }
+        }
+
+        public static void RemoveEmbedAds(Process process)
         {
             var kakaotalk = process.MainWindowHandle;
             if (kakaotalk == IntPtr.Zero)
                 return;
 
             var children = new List<IntPtr>();
-            using (var context = new GCHandleContext(children))
-            {
-                static bool EnumChildWindows(IntPtr handle, IntPtr param)
-                {
-                    if (GCHandle.FromIntPtr(param).Target is not List<IntPtr> list)
-                        return false;
-                    list.Add(handle);
-                    return true;
-                }
+            using var context = new GCHandleContext(children);
 
-                Win32.EnumChildWindows(kakaotalk, EnumChildWindows, context.Pointer);
+            static bool EnumChildWindows(IntPtr handle, IntPtr param)
+            {
+                if (GCHandle.FromIntPtr(param).Target is not List<IntPtr> list)
+                    return false;
+                list.Add(handle);
+                return true;
             }
+
+            Win32.EnumChildWindows(kakaotalk, EnumChildWindows, context.Pointer);
 
             var rect = Win32.GetWindowRect(kakaotalk);
             foreach (var child in children)
             {
-                if (token.IsCancellationRequested)
-                    break;
                 if (Win32.GetParent(child) != kakaotalk)
                     continue;
 
@@ -91,6 +89,8 @@ namespace KakaotalkAdConcealer.Concealer
                 HideMainViewAd(@class, kakaotalk, child);
                 HideMainViewAdArea(caption, rect, child);
                 HideLockViewAdArea(caption, rect, child);
+
+                Win32.UpdateWindow(kakaotalk);
             }
         }
 

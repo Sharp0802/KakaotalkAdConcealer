@@ -46,7 +46,7 @@ namespace KakaotalkAdConcealer.Concealer
             switch (type)
             {
                 case BlockType.Embedded:
-                    await Task.Factory.StartNew(() => ProcessAdBlocker.RemoveAllEmbedAds(CancellationToken.None))
+                    await Task.Factory.StartNew(ProcessAdBlocker.RemoveAllEmbedAds)
                         .ContinueWith(_ => ShowInfo(Resources.CompletedTask, Resources.Completed));
                     break;
                 case BlockType.Popup:
