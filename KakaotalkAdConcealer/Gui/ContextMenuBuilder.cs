@@ -7,9 +7,8 @@ namespace KakaotalkAdConcealer.Gui
     {
         private List<ToolStripItem> Items { get; } = new();
 
-        public ContextMenuBuilder Add(out ToolStripMenuItem item)
+        public ContextMenuBuilder Add(ToolStripMenuItem item)
         {
-            item = new ToolStripMenuItem();
             Items.Add(item);
             return this;
         }
@@ -17,13 +16,6 @@ namespace KakaotalkAdConcealer.Gui
         public ContextMenuBuilder AddSeparator()
         {
             var item = new ToolStripSeparator();
-            Items.Add(item);
-            return this;
-        }
-
-        public ContextMenuBuilder AddDropdown(out ToolStripDropDownItem item)
-        {
-            item = new ToolStripMenuItem();
             Items.Add(item);
             return this;
         }
