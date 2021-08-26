@@ -4,7 +4,7 @@
 
 namespace KakaotalkAdConcealer::Native
 {
-	public enum struct ShowingFlag : int32_t
+	public enum struct ShowingFlag : int
 	{
 		Hide = 0,
 		ShowNomal = 1,
