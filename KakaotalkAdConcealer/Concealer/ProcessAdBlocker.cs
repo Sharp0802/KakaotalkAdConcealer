@@ -5,17 +5,35 @@ using KakaotalkAdConcealer.Native;
 
 namespace KakaotalkAdConcealer.Concealer
 {
+    /// <summary>
+    /// Helper for hide ads
+    /// </summary>
     public static class ProcessAdBlocker
     {
+        /// <summary>
+        /// Ads blocking update rate (miliseconds)
+        /// </summary>
         private const int UpdateRate = 100;
 
+        /// <summary>
+        /// Window close flag
+        /// </summary>
         private const uint WmClose = 0x10;
 
+        /// <summary>
+        /// Window padding of shadow
+        /// </summary>
         private const int ShadowPadding = 2;
 
+        /// <summary>
+        /// Window padding of main view
+        /// </summary>
         private const int MainViewPadding = 31;
 
-
+        /// <summary>
+        /// Remove all ads repeatly
+        /// </summary>
+        /// <param name="token">Token that can cancel this task</param>
         public static Task RemoveAllAds(CancellationToken token)
         {
             return Task.Factory.StartNew(() =>
@@ -29,6 +47,9 @@ namespace KakaotalkAdConcealer.Concealer
             }, token);
         }
 
+        /// <summary>
+        /// Remove popup ads only
+        /// </summary>
         public static void RemovePopupAd()
         {
             var popUp = Win32.FindWindow(IntPtr.Zero, IntPtr.Zero, null, "");
@@ -41,6 +62,10 @@ namespace KakaotalkAdConcealer.Concealer
                 Win32.SendMessage(popUp, WmClose);
         }
 
+        /// <summary>
+        /// Remove all embedded ads only
+        /// </summary>
+        /// <param name="token">Token that can cancel this task</param>
         public static void RemoveAllEmbedAds(CancellationToken token)
         {
             foreach (var kakaotalk in Process.GetProcessesByName("kakaotalk"))
@@ -51,6 +76,11 @@ namespace KakaotalkAdConcealer.Concealer
             }
         }
 
+        /// <summary>
+        /// Remove only embedded ad once
+        /// </summary>
+        /// <param name="process">Kakaotalk process handle</param>
+        /// <param name="token">Token that can cancel this task</param>
         public static void RemoveEmbedAds(Process process, CancellationToken token)
         {
             var kakaotalk = process.MainWindowHandle;
@@ -90,6 +120,12 @@ namespace KakaotalkAdConcealer.Concealer
             }
         }
 
+        /// <summary>
+        /// Hide ad at main view
+        /// </summary>
+        /// <param name="class">Window class</param>
+        /// <param name="kakaotalk">Kakaotalk process handle</param>
+        /// <param name="child">Child process handle</param>
         private static void HideMainViewAd(string @class, IntPtr kakaotalk, IntPtr child)
         {
             if (@class is not "BannerAdWnd" and not "EVA_Window" ||
@@ -99,6 +135,12 @@ namespace KakaotalkAdConcealer.Concealer
             Win32.SetWindowPos(child, IntPtr.Zero, new Vector(0, 0), new Vector(0, 0), SizingFlag.NoMove);
         }
 
+        /// <summary>
+        /// Hide ad area at main view
+        /// </summary>
+        /// <param name="caption">Window caption</param>
+        /// <param name="rect">Window rect</param>
+        /// <param name="child">Child process handle</param>
         private static void HideMainViewAdArea(string caption, Rect rect, IntPtr child)
         {
             if (!caption.StartsWith("OnlineMainView"))
@@ -107,6 +149,12 @@ namespace KakaotalkAdConcealer.Concealer
             Win32.SetWindowPos(child, IntPtr.Zero, new Vector(0, 0), size, SizingFlag.NoMove);
         }
 
+        /// <summary>
+        /// Hide ad area at lock view
+        /// </summary>
+        /// <param name="caption">WIndows caption</param>
+        /// <param name="rect">Window rect</param>
+        /// <param name="child">Child process handle</param>
         private static void HideLockViewAdArea(string caption, Rect rect, IntPtr child)
         {
             if (!caption.StartsWith("LockModeView"))
