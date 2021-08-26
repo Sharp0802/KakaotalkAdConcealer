@@ -66,6 +66,8 @@ namespace KakaotalkAdConcealer
                         .Build()
                 };
 
+                InfoNotifier.ShowRunningNotification();
+
                 return Instance;
             }
         }
