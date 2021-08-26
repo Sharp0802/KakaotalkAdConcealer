@@ -7,17 +7,37 @@ using KakaotalkAdConcealer.Properties;
 
 namespace KakaotalkAdConcealer.Concealer
 {
+    /// <summary>
+    /// Helper for blocking ads
+    /// </summary>
     public class AdBlockContext : IDisposable
     {
+        /// <summary>
+        /// CancellationTokenSource for long executing methods
+        /// </summary>
         private CancellationTokenSource Source { get; } = new();
+
         private Task Blocker { get; set; }
+        
+        /// <summary>
+        /// Property containing blocking state
+        /// </summary>
         private ForceRef<bool> IsBlocking { get; } = new();
 
+        /// <summary>
+        /// Helper for showing messagebox with text and caption
+        /// </summary>
+        /// <param name="text">Text of messagebox</param>
+        /// <param name="caption">Caption of messagebox</param>
         private static void ShowInfo(string text, string caption)
         {
             MessageBox.Show(null, text, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        /// <summary>
+        /// Toggle blocking state
+        /// </summary>
+        /// <returns>Value of blocking state</returns>
         public bool ToggleBlockState()
         {
             lock (IsBlocking)
@@ -28,6 +48,10 @@ namespace KakaotalkAdConcealer.Concealer
             }
         }
         
+        /// <summary>
+        /// Set blocking state
+        /// </summary>
+        /// <param name="state">Value to set</param>
         public void SwitchBlockState(bool state)
         {
             if (state)
@@ -41,6 +65,10 @@ namespace KakaotalkAdConcealer.Concealer
             }
         }
         
+        /// <summary>
+        /// Block ads like param once
+        /// </summary>
+        /// <param name="type">Value of blocking type</param>
         public async Task BlockOnce(BlockType type)
         {
             switch (type)
