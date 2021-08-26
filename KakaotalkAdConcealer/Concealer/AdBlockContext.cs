@@ -16,8 +16,6 @@ namespace KakaotalkAdConcealer.Concealer
         /// CancellationTokenSource for long executing methods
         /// </summary>
         private CancellationTokenSource Source { get; } = new();
-
-        private Task Blocker { get; set; }
         
         /// <summary>
         /// Property containing blocking state
@@ -56,12 +54,11 @@ namespace KakaotalkAdConcealer.Concealer
         {
             if (state)
             {
-                Blocker ??= ProcessAdBlocker.RemoveAllAds(Source.Token);
+                _ = ProcessAdBlocker.RemoveAllAds(Source.Token);
             }
             else
             {
                 Source.Cancel();
-                Blocker = null;
             }
         }
         
