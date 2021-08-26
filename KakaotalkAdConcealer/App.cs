@@ -1,5 +1,4 @@
-﻿using System;
-using System.Drawing;
+﻿using System.Drawing;
 using System.Globalization;
 using System.Reflection;
 using System.Windows.Forms;
@@ -10,15 +9,35 @@ using KakaotalkAdConcealer.Properties;
 
 namespace KakaotalkAdConcealer
 {
+    /// <summary>
+    /// Application instance
+    /// </summary>
     public class App : IDisposable
     {
+        /// <summary>
+        /// Instance initialization locking handle
+        /// </summary>
         private static object LockHandle { get; } = new();
+
+        /// <summary>
+        /// Singleton instance
+        /// </summary>
         private static App Instance { get; set; }
 
+        /// <summary>
+        /// Ads blocking context
+        /// </summary>
         private AdBlockContext Context { get; } = new();
 
+        /// <summary>
+        /// Event for localization
+        /// </summary>
         private event Action<CultureInfo> CultureUpdated;
 
+        /// <summary>
+        /// Activate application
+        /// </summary>
+        /// <returns>Application instance</returns>
         public static App Create()
         {
             lock (LockHandle)
@@ -57,12 +76,18 @@ namespace KakaotalkAdConcealer
             GC.SuppressFinalize(this);
         }
 
+        /// <summary>
+        /// Menu item for showing title
+        /// </summary>
         private Initializable<ToolStripMenuItem> Title { get; } = new(title =>
         {
             Instance.CultureUpdated += _ => title.Text = Resources.Title;
             title.ForeColor = Color.Gray;
         });
 
+        /// <summary>
+        /// Menu item for showing/switching auto startup state
+        /// </summary>
         private Initializable<ToolStripMenuItem> Startup { get; } = new(startup =>
         {
             Instance.CultureUpdated += _ => startup.Text = Resources.ActivateAtStartup;
@@ -70,6 +95,9 @@ namespace KakaotalkAdConcealer
             startup.Click += (_, _) => startup.Checked = StartupRegister.Toggle(Resources.AppName);
         });
 
+        /// <summary>
+        /// Menu item for showing/selecting language in language list
+        /// </summary>
         private Initializable<ToolStripMenuItem> Language { get; } = new(language =>
         {
             Instance.CultureUpdated += _ =>
@@ -87,24 +115,36 @@ namespace KakaotalkAdConcealer
             }
         });
 
+        /// <summary>
+        /// Menu item for showing/switching ads blocking state
+        /// </summary>
         private Initializable<ToolStripMenuItem> RemoveAll { get; } = new(removeAll =>
         {
             Instance.CultureUpdated += _ => removeAll.Text = Resources.RemoveAllAds;
             removeAll.Click += (_, _) => removeAll.Checked = Instance.Context.ToggleBlockState();
         });
 
+        /// <summary>
+        /// Menu item for removing embedded ads manually
+        /// </summary>
         private Initializable<ToolStripMenuItem> RemoveEmbedded { get; } = new(removeEmbedded =>
         {
             Instance.CultureUpdated += _ => removeEmbedded.Text = Resources.RemoveEmbeddedAdsOnce;
             removeEmbedded.Click += (_, _) => _ = Instance.Context.BlockOnce(BlockType.Embedded);
         });
 
+        /// <summary>
+        /// Menu item for removing popup ads manually
+        /// </summary>
         private Initializable<ToolStripMenuItem> RemovePopup { get; } = new(removePopup =>
         {
             Instance.CultureUpdated += _ => removePopup.Text = Resources.RemovePopupAdsOnce;
             removePopup.Click += (_, _) => _ = Instance.Context.BlockOnce(BlockType.Popup);
         });
 
+        /// <summary>
+        /// Menu item for exit this application
+        /// </summary>
         private Initializable<ToolStripMenuItem> Quit { get; } = new(quit =>
         {
             Instance.CultureUpdated += _ => quit.Text = Resources.Quit;
