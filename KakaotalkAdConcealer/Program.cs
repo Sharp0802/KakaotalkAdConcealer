@@ -6,6 +6,7 @@ namespace KakaotalkAdConcealer
 {
     internal static class Program
     {
+        // Keep it simple!
         private static void Main()
         {
             using var mutex = new Mutex(true, Resources.AppName, out var @new);
