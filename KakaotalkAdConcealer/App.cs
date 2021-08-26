@@ -14,6 +14,8 @@ namespace KakaotalkAdConcealer
     /// </summary>
     public class App : IDisposable
     {
+        public const string AppName = "KakaotalkAdConcealer";
+
         /// <summary>
         /// Instance initialization locking handle
         /// </summary>
@@ -93,8 +95,8 @@ namespace KakaotalkAdConcealer
         private Initializable<ToolStripMenuItem> Startup { get; } = new(startup =>
         {
             Instance.CultureUpdated += _ => startup.Text = Resources.ActivateAtStartup;
-            startup.Checked = StartupRegister.IsAssigned(Resources.AppName);
-            startup.Click += (_, _) => startup.Checked = StartupRegister.Toggle(Resources.AppName);
+            startup.Checked = StartupRegister.IsAssigned(AppName);
+            startup.Click += (_, _) => startup.Checked = StartupRegister.Toggle(AppName);
         });
 
         /// <summary>

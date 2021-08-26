@@ -9,7 +9,7 @@ namespace KakaotalkAdConcealer
         // Keep it simple!
         private static void Main()
         {
-            using var mutex = new Mutex(true, "KakaotalkAdConcealer", out var @new);
+            using var mutex = new Mutex(true, App.AppName, out var @new);
             if (@new)
             {
                 using var _ = App.Create();
