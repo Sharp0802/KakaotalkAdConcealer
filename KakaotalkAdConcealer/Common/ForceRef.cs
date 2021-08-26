@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace KakaotalkAdConcealer.Common
 {
-    public class ForceRef<T> : IEquatable<ForceRef<T>>
+    public class ForceRef<T> : IEquatable<ForceRef<T>> where T : struct
     {
         public T Value { get; set; }
         
