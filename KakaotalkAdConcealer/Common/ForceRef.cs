@@ -3,8 +3,15 @@ using System.Runtime.CompilerServices;
 
 namespace KakaotalkAdConcealer.Common
 {
+    /// <summary>
+    /// Force T to be reference type
+    /// </summary>
+    /// <typeparam name="T">Type of value that to be reference type</typeparam>
     public class ForceRef<T> : IEquatable<ForceRef<T>> where T : struct
     {
+        /// <summary>
+        /// Value of reference
+        /// </summary>
         public T Value { get; set; }
 
         public static bool operator ==(ForceRef<T> one, ForceRef<T> other) => Equals(one, other);
