@@ -27,7 +27,7 @@ namespace KakaotalkAdConcealer::Native
 	public:
 		static property bool ExceptionWhenFail
 		{
-			bool get() 
+			bool get()
 			{
 				return _exceptionWhenFail;
 			}
