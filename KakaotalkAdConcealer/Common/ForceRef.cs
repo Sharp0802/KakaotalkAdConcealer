@@ -6,8 +6,6 @@ namespace KakaotalkAdConcealer.Common
     public class ForceRef<T> : IEquatable<ForceRef<T>> where T : struct
     {
         public T Value { get; set; }
-        
-        private Guid Guid { get; } = Guid.NewGuid();
 
         public static bool operator ==(ForceRef<T> one, ForceRef<T> other) => Equals(one, other);
         public static bool operator !=(ForceRef<T> one, ForceRef<T> other) => !Equals(one, other);
@@ -23,6 +21,6 @@ namespace KakaotalkAdConcealer.Common
             => Equals(this, obj);
 
         public override int GetHashCode() 
-            => Guid.GetHashCode();
+            => Value.GetHashCode();
     }
 }
