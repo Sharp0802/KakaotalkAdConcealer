@@ -4,8 +4,16 @@ using System.Reflection;
 
 namespace KakaotalkAdConcealer.Common
 {
+    /// <summary>
+    /// Helper for initializing outside of internal class
+    /// </summary>
+    /// <typeparam name="T">Type to initialize</typeparam>
     public class Initializable<T> where T : new()
     {
+        /// <summary>
+        /// Initialize properties in instance
+        /// </summary>
+        /// <param name="instance">Instance containing initializable properties</param>
         public static void Initialize(object instance)
         {
             foreach (var initializer in instance
@@ -26,7 +34,14 @@ namespace KakaotalkAdConcealer.Common
             Initializer = initializer;
         }
 
+        /// <summary>
+        /// Current value of initializable
+        /// </summary>
         public T Value { get; }
+
+        /// <summary>
+        /// Delegate that initialize value
+        /// </summary>
         private Action<T> Initializer { get; }
     }
 }
