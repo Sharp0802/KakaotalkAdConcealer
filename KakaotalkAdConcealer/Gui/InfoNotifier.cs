@@ -1,4 +1,5 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
+﻿using KakaotalkAdConcealer.Properties;
+using Microsoft.Toolkit.Uwp.Notifications;
 
 namespace KakaotalkAdConcealer.Gui
 {
@@ -7,8 +8,8 @@ namespace KakaotalkAdConcealer.Gui
 		public static void ShowRunningNotification()
 		{
 			new ToastContentBuilder()
-				.AddText("Goodbye, Ads", hintMaxLines: 1)
-				.AddText("Ads blocker is running now!")
+				.AddText(Resources.GoodbyeAds, hintMaxLines: 1)
+				.AddText(Resources.RunningNow)
 				.Show();
 		}
 	}

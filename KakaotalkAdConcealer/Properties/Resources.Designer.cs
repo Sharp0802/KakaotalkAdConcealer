@@ -97,6 +97,15 @@ namespace KakaotalkAdConcealer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Goodbye, Ads.
+        /// </summary>
+        internal static string GoodbyeAds {
+            get {
+                return ResourceManager.GetString("GoodbyeAds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Quit.
         /// </summary>
         internal static string Quit {
@@ -129,6 +138,15 @@ namespace KakaotalkAdConcealer.Properties {
         internal static string RemovePopupAdsOnce {
             get {
                 return ResourceManager.GetString("RemovePopupAdsOnce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ads blocker is running now!.
+        /// </summary>
+        internal static string RunningNow {
+            get {
+                return ResourceManager.GetString("RunningNow", resourceCulture);
             }
         }
         

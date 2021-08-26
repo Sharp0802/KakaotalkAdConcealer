@@ -144,4 +144,10 @@
   <data name="Completed" xml:space="preserve">
     <value>Completed</value>
   </data>
+  <data name="GoodbyeAds" xml:space="preserve">
+    <value>Goodbye, Ads</value>
+  </data>
+  <data name="RunningNow" xml:space="preserve">
+    <value>Ads blocker is running now!</value>
+  </data>
 </root>

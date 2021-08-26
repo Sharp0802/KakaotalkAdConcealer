@@ -38,4 +38,10 @@
     <data name="Title" xml:space="preserve">
         <value>카카오톡 광고 제거기</value>
     </data>
+    <data name="GoodbyeAds" xml:space="preserve">
+        <value>광고는 이제 그만</value>
+    </data>
+    <data name="RunningNow" xml:space="preserve">
+        <value>광고 제거기가 실행중입니다</value>
+    </data>
 </root>
