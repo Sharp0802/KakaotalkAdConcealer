@@ -7,7 +7,7 @@ namespace KakaotalkAdConcealer.Gui
 		public static void ShowRunningNotification()
 		{
 			new ToastContentBuilder()
-				.AddText("KakaotalkAdConcealer", hintMaxLines: 1)
+				.AddText("Goodbye, Ads", hintMaxLines: 1)
 				.AddText("Ads blocker is running now!")
 				.Show();
 		}
