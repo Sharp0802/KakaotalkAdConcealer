@@ -79,15 +79,6 @@ namespace KakaotalkAdConcealer.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to KakaotalkAdConcealer.
-        /// </summary>
-        internal static string AppName {
-            get {
-                return ResourceManager.GetString("AppName", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Completed.
         /// </summary>
         internal static string Completed {

@@ -135,10 +135,6 @@
   <data name="Quit" xml:space="preserve">
     <value>Quit</value>
   </data>
-  <data name="AppName" xml:space="preserve">
-    <value>KakaotalkAdConcealer</value>
-    <comment>This is used for mutex and registry; Do not edit this!</comment>
-  </data>
   <data name="AlreadyActivated" xml:space="preserve">
     <value>Already activated</value>
   </data>

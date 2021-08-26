@@ -24,17 +24,19 @@
 		<EmbeddedResource Include="Assets\icon.ico" />
 	</ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.0.2" />
-	</ItemGroup>
-	<ItemGroup>
 	  <EmbeddedResource Update="Properties\Resources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
 	  </EmbeddedResource>
+		<EmbeddedResource Update="Properties\Resources.ko-kr.resx">
+			<DependentUpon>Resources.resx</DependentUpon>
+			<Generator>ResXFileCodeGenerator</Generator>
+		</EmbeddedResource>
 	</ItemGroup>
 
 	<!-- References -->
 	<ItemGroup>
 		<ProjectReference Include="..\KakaotalkAdConcealer.Native\KakaotalkAdConcealer.Native.vcxproj" />
+		<PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.0.2" />
 	</ItemGroup>
 
 </Project>
