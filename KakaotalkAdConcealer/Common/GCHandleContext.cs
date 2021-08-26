@@ -1,14 +1,20 @@
-﻿using System;
-using System.Diagnostics.CodeAnalysis;
-using System.Runtime.InteropServices;
+﻿using System.Runtime.InteropServices;
 
 namespace KakaotalkAdConcealer.Common
 {
-    [type: SuppressMessage("ReSharper", "InconsistentNaming")]
+    /// <summary>
+    /// GCHandle allocate/delete helper
+    /// </summary>
     public class GCHandleContext : IDisposable
     {
+        /// <summary>
+        /// Allocated handle for object
+        /// </summary>
         public GCHandle Handle { get; }
 
+        /// <summary>
+        /// Pointer of handle
+        /// </summary>
         public IntPtr Pointer => GCHandle.ToIntPtr(Handle);
 
         public GCHandleContext(object obj)
@@ -17,6 +23,8 @@ namespace KakaotalkAdConcealer.Common
                 throw new ArgumentNullException(nameof(obj));
             Handle = GCHandle.Alloc(obj);
         }
+
+        ~GCHandleContext() => Dispose();
 
         public void Dispose()
         {
