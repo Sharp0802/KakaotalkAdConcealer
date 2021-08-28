@@ -9,12 +9,7 @@ namespace KakaotalkAdConcealer.Forms.Gui
 	/// </summary>
 	public class ThemeReferencedRenderer : ToolStripProfessionalRenderer
 	{
-		/// <summary>
-		/// Color table using color by windows theme
-		/// </summary>
-		private static ThemeReferencedColorTable ThemeColorTable { get; } = new ThemeReferencedColorTable();
-
-		public ThemeReferencedRenderer() : base(ThemeColorTable) { }
+		public ThemeReferencedRenderer() : base(new ThemeReferencedColorTable()) { }
 
 		protected override void OnRenderArrow(ToolStripArrowRenderEventArgs args)
 		{
@@ -42,8 +37,16 @@ namespace KakaotalkAdConcealer.Forms.Gui
 			});
 		}
 
-        protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
+        protected override void OnRenderSeparator(ToolStripSeparatorRenderEventArgs args)
         {
-        }
+			args.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+			var r = args.Item.ContentRectangle;
+			using var pen = new Pen(ThemeDictionary.BaseMedium);
+			args.Graphics.DrawLines(pen, new Point[]
+			{
+				new Point(r.Left + 5, (r.Bottom + r.Top) / 2),
+				new Point(r.Right - 5, (r.Bottom + r.Top) / 2)
+			});
+		}
     }
 }
