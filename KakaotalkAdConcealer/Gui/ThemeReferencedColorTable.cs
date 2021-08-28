@@ -5,10 +5,19 @@ using Windows.UI.ViewManagement;
 
 namespace KakaotalkAdConcealer.Gui
 {
+	/// <summary>
+	/// Custom color table for making notifyicon context menu to use color by windows theme
+	/// </summary>
 	public class ThemeReferencedColorTable : ProfessionalColorTable
 	{
+		/// <summary>
+		/// Windows ui settings
+		/// </summary>
 		private static UISettings Settings { get; } = new UISettings();
 
+		/// <summary>
+		/// Windows background theme color
+		/// </summary>
 		public static Color Background
 		{
 			get
@@ -18,6 +27,9 @@ namespace KakaotalkAdConcealer.Gui
 			}
 		}
 
+		/// <summary>
+		/// Windows foreground theme color
+		/// </summary>
 		public static Color Smoke
 		{
 			get
