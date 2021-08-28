@@ -18,16 +18,6 @@ namespace KakaotalkAdConcealer.Concealer
         private ForceRef<bool> IsBlocking { get; } = new();
 
         /// <summary>
-        /// Helper for showing messagebox with text and caption
-        /// </summary>
-        /// <param name="text">Text of messagebox</param>
-        /// <param name="caption">Caption of messagebox</param>
-        private static void ShowInfo(string text, string caption)
-        {
-            MessageBox.Show(null, text, caption, MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        /// <summary>
         /// Toggle blocking state
         /// </summary>
         /// <returns>Value of blocking state</returns>
@@ -54,27 +44,6 @@ namespace KakaotalkAdConcealer.Concealer
             else
             {
                 Source.Cancel();
-            }
-        }
-        
-        /// <summary>
-        /// Block ads like param once
-        /// </summary>
-        /// <param name="type">Value of blocking type</param>
-        public async Task BlockOnce(BlockType type)
-        {
-            switch (type)
-            {
-                case BlockType.Embedded:
-                    await Task.Factory.StartNew(() => ProcessAdBlocker.RemoveAllEmbedAds(CancellationToken.None))
-                        .ContinueWith(_ => ShowInfo(Resources.CompletedTask, Resources.Completed));
-                    break;
-                case BlockType.Popup:
-                    await Task.Factory.StartNew(ProcessAdBlocker.RemovePopupAd)
-                        .ContinueWith(_ => ShowInfo(Resources.CompletedTask, Resources.Completed));
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
 
