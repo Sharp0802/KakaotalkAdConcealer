@@ -5,7 +5,7 @@ namespace KakaotalkAdConcealer.Common
     /// <summary>
     /// GCHandle allocate/delete helper
     /// </summary>
-    public class GCHandleContext : IDisposable
+    internal class GCHandleContext : IDisposable
     {
         /// <summary>
         /// Allocated handle for object

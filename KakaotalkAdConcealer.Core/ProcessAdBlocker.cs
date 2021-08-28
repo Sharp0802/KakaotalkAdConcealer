@@ -8,7 +8,7 @@ namespace KakaotalkAdConcealer.Concealer
     /// <summary>
     /// Helper for hide ads
     /// </summary>
-    public static class ProcessAdBlocker
+    internal static class ProcessAdBlocker
     {
         /// <summary>
         /// Ads blocking update rate (miliseconds)

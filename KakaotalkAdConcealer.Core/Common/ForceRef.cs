@@ -7,7 +7,7 @@ namespace KakaotalkAdConcealer.Common
     /// Force T to be reference type
     /// </summary>
     /// <typeparam name="T">Type of value that to be reference type</typeparam>
-    public class ForceRef<T> : IEquatable<ForceRef<T>> where T : struct
+    internal class ForceRef<T> : IEquatable<ForceRef<T>> where T : struct
     {
         /// <summary>
         /// Value of reference
