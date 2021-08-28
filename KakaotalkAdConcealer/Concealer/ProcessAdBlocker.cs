@@ -51,7 +51,7 @@ namespace KakaotalkAdConcealer.Concealer
                 {
                     // ignored
                 }
-                catch ()
+                catch (OperationCanceledException)
                 {
                     // ignored
                 }
