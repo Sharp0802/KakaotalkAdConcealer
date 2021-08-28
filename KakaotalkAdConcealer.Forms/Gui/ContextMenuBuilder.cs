@@ -27,8 +27,7 @@ namespace KakaotalkAdConcealer.Forms.Gui
         /// </summary>
         public ContextMenuBuilder AddSeparator()
         {
-            var item = new ToolStripSeparator();
-            Items.Add(item);
+            Items.Add(new ToolStripSeparator { Margin = new Padding(0, 2, 0, 2) });
             return this;
         }
         
@@ -38,15 +37,18 @@ namespace KakaotalkAdConcealer.Forms.Gui
         /// <returns>Builded menu strip</returns>
         public ContextMenuStrip Build()
         {
+            const int padding = 5;
+
             var menu = new ContextMenuStrip
             {
-                Renderer = new ThemeReferencedRenderer { VerticalPadding = 4 },
+                Renderer = new ThemeReferencedRenderer { VerticalPadding = padding },
                 ForeColor = ThemeDictionary.TextFillColorPrimary
             };
             var array = Items.ToArray();
-            foreach (var item in array)
+            for (int i = 0; i < array.Length; ++i)
             {
-                item.Padding = new Padding(0, 4, 0, 4);
+                array[i].Padding = new Padding(0, padding, 0, padding);
+                array[i].Margin = new Padding(0, i == 0 ? 5 : 0, 0, i == array.Length - 1 ? 5 : 0);
             }
             menu.Items.AddRange(array);
             return menu;
