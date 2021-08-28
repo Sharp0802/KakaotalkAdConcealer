@@ -61,8 +61,6 @@ namespace KakaotalkAdConcealer
                         .Add(Instance.Language.Value)
                         .AddSeparator()
                         .Add(Instance.RemoveAll.Value)
-                        .Add(Instance.RemoveEmbedded.Value)
-                        .Add(Instance.RemovePopup.Value)
                         .AddSeparator()
                         .Add(Instance.Quit.Value)
                         .Build()
@@ -130,26 +128,6 @@ namespace KakaotalkAdConcealer
             Instance.CultureUpdated += _ => removeAll.Text = Resources.RemoveAllAds;
             removeAll.Click += (_, _) => removeAll.Checked = Instance.Context.ToggleBlockState();
             removeAll.ForeColor = ThemeReferencedColorTable.Foreground;
-        });
-
-        /// <summary>
-        /// Menu item for removing embedded ads manually
-        /// </summary>
-        private Initializable<ToolStripMenuItem> RemoveEmbedded { get; } = new(removeEmbedded =>
-        {
-            Instance.CultureUpdated += _ => removeEmbedded.Text = Resources.RemoveEmbeddedAdsOnce;
-            removeEmbedded.Click += (_, _) => _ = Instance.Context.BlockOnce(BlockType.Embedded);
-            removeEmbedded.ForeColor = ThemeReferencedColorTable.Foreground;
-        });
-
-        /// <summary>
-        /// Menu item for removing popup ads manually
-        /// </summary>
-        private Initializable<ToolStripMenuItem> RemovePopup { get; } = new(removePopup =>
-        {
-            Instance.CultureUpdated += _ => removePopup.Text = Resources.RemovePopupAdsOnce;
-            removePopup.Click += (_, _) => _ = Instance.Context.BlockOnce(BlockType.Popup);
-            removePopup.ForeColor = ThemeReferencedColorTable.Foreground;
         });
 
         /// <summary>
