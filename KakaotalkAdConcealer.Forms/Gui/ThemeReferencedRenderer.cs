@@ -60,5 +60,15 @@ namespace KakaotalkAdConcealer.Forms.Gui
 			args.TextRectangle = rect;
 			base.OnRenderItemText(args);
 		}
+
+        protected override void OnRenderMenuItemBackground(ToolStripItemRenderEventArgs args)
+		{
+			if (args.Item.Selected)
+            {
+				args.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+				using var brush = new SolidBrush(ThemeDictionary.ListMedium);
+				args.Graphics.FillRectangle(brush, new Rectangle(2, 0, args.Item.Width - 4, args.Item.Height - 1));
+            }
+		}
     }
 }
