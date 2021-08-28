@@ -4,8 +4,14 @@ using System.Windows.Forms;
 
 namespace KakaotalkAdConcealer.Gui
 {
+	/// <summary>
+	/// Custom renderer for making notifyicon context menu to use color by windows theme
+	/// </summary>
 	public class ThemeReferencedRenderer : ToolStripProfessionalRenderer
 	{
+		/// <summary>
+		/// Color table using color by windows theme
+		/// </summary>
 		private static ThemeReferencedColorTable ThemeColorTable { get; } = new ThemeReferencedColorTable();
 
 		public ThemeReferencedRenderer() : base(ThemeColorTable) { }
