@@ -10,6 +10,11 @@ namespace KakaotalkAdConcealer.Forms.Gui
 	/// </summary>
 	public class ThemeReferencedColorTable : ProfessionalColorTable
 	{
+        public ThemeReferencedColorTable()
+        {
+            UseSystemColors = false;
+        }
+
         public override Color ButtonCheckedGradientBegin => ListLow;
 
         public override Color ButtonCheckedGradientEnd => ListLow;
@@ -50,7 +55,7 @@ namespace KakaotalkAdConcealer.Forms.Gui
 
         public override Color CheckSelectedBackground => ListLow;
 
-        public override Color MenuBorder => ListLow;
+        public override Color MenuBorder => BaseMedium;
 
         public override Color MenuItemBorder => ListLow;
 
@@ -94,9 +99,9 @@ namespace KakaotalkAdConcealer.Forms.Gui
 
         public override Color RaftingContainerGradientEnd => ChromeMidium;
 
-        public override Color SeparatorDark => ListMedium;
+        public override Color SeparatorDark => BaseMedium;
 
-        public override Color SeparatorLight => TextFillColorPrimary;
+        public override Color SeparatorLight => BaseMedium;
 
         public override Color StatusStripGradientBegin => ChromeMidium;
 
