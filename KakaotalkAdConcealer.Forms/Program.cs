@@ -1,5 +1,4 @@
-﻿using System.Threading;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using KakaotalkAdConcealer.Forms.Properties;
 
 namespace KakaotalkAdConcealer.Forms
@@ -9,6 +8,7 @@ namespace KakaotalkAdConcealer.Forms
         // Keep it simple!
         private static void Main()
         {
+            AppDomain.CurrentDomain.UnhandledException += OnUnhandledException;
             using var mutex = new Mutex(true, App.AppName, out var @new);
             if (@new)
             {
@@ -20,6 +20,11 @@ namespace KakaotalkAdConcealer.Forms
             {
                 MessageBox.Show(Resources.AlreadyActivated);
             }
+        }
+
+        private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)
+        {
+            MessageBox.Show(null, args.ExceptionObject.ToString(), "Fatal", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }
