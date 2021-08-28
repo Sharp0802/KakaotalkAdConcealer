@@ -39,7 +39,7 @@ namespace KakaotalkAdConcealer.Gui
         /// <returns>Builded menu strip</returns>
         public ContextMenuStrip Build()
         {
-            var menu = new ContextMenuStrip();
+            var menu = new ContextMenuStrip { Renderer = new ThemeReferencedRenderer() };
             menu.Items.AddRange(Items.ToArray());
             return menu;
         }
