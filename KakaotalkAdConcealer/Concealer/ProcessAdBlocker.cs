@@ -38,12 +38,19 @@ namespace KakaotalkAdConcealer.Concealer
         {
             return Task.Factory.StartNew(() =>
             {
-                while (!token.IsCancellationRequested)
+                try
                 {
-                    RemoveAllEmbedAds(token);
-                    RemovePopupAd();
-                    Task.Delay(UpdateRate, token).Wait(token);
-                }
+                    while (!token.IsCancellationRequested)
+                    {
+                        RemoveAllEmbedAds(token);
+                        RemovePopupAd();
+                        Task.Delay(UpdateRate, token).Wait(token);
+                    }
+				}
+                catch (TaskCanceledException)
+                {
+                    // ignored
+				}
             }, token);
         }
 
