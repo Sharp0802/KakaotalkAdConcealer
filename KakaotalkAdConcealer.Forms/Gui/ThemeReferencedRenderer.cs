@@ -9,6 +9,8 @@ namespace KakaotalkAdConcealer.Forms.Gui
 	/// </summary>
 	public class ThemeReferencedRenderer : ToolStripProfessionalRenderer
 	{
+		public int VerticalPadding { get; init; }
+
 		public ThemeReferencedRenderer() : base(new ThemeReferencedColorTable()) { }
 
 		protected override void OnRenderArrow(ToolStripArrowRenderEventArgs args)
@@ -47,6 +49,16 @@ namespace KakaotalkAdConcealer.Forms.Gui
 				new Point(r.Left + 5, (r.Bottom + r.Top) / 2),
 				new Point(r.Right - 5, (r.Bottom + r.Top) / 2)
 			});
+		}
+
+        protected override void OnRenderItemText(ToolStripItemTextRenderEventArgs args)
+		{
+			args.TextFormat &= ~TextFormatFlags.HidePrefix;
+			args.TextFormat |= TextFormatFlags.VerticalCenter;
+			var rect = args.TextRectangle;
+			rect.Offset(0, VerticalPadding);
+			args.TextRectangle = rect;
+			base.OnRenderItemText(args);
 		}
     }
 }
