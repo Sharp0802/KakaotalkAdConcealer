@@ -1,5 +1,5 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-	
+
 	<!-- Commons -->
 	<PropertyGroup>
 		<OutputType>WinExe</OutputType>
@@ -24,14 +24,19 @@
 		<EmbeddedResource Include="Assets\icon.ico" />
 	</ItemGroup>
 	<ItemGroup>
-	  <EmbeddedResource Update="Properties\Resources.resx">
-	    <Generator>ResXFileCodeGenerator</Generator>
-	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-	  </EmbeddedResource>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>ResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
 		<EmbeddedResource Update="Properties\Resources.ko-kr.resx">
 			<DependentUpon>Resources.resx</DependentUpon>
 			<Generator>ResXFileCodeGenerator</Generator>
 		</EmbeddedResource>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
 	</ItemGroup>
 
 	<!-- References -->
@@ -39,13 +44,6 @@
 		<ProjectReference Include="..\KakaotalkAdConcealer.Core\KakaotalkAdConcealer.Core.csproj" />
 		<ProjectReference Include="..\KakaotalkAdConcealer.Native\KakaotalkAdConcealer.Native.vcxproj" />
 		<PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.0.2" />
-	</ItemGroup>
-	<ItemGroup>
-	  <Compile Update="Properties\Resources.Designer.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>Resources.resx</DependentUpon>
-	  </Compile>
 	</ItemGroup>
 
 </Project>
