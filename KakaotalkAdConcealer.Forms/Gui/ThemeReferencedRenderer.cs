@@ -21,7 +21,7 @@ namespace KakaotalkAdConcealer.Forms.Gui
 			args.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			var r = new Rectangle(args.ArrowRectangle.Location, args.ArrowRectangle.Size);
 			r.Inflate(-2, -4);
-			using var pen = new Pen(ThemeReferencedColorTable.Foreground);
+			using var pen = new Pen(ThemeDictionary.TextFillColorPrimary);
 			args.Graphics.DrawLines(pen, new Point[] {
 				new Point(r.Left, r.Top),
 				new Point(r.Right, r.Top + r.Height / 2),
@@ -34,12 +34,16 @@ namespace KakaotalkAdConcealer.Forms.Gui
 			args.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			var r = new Rectangle(args.ImageRectangle.Location, args.ImageRectangle.Size);
 			r.Inflate(-2, -4);
-			using var pen = new Pen(ThemeReferencedColorTable.Foreground);
+			using var pen = new Pen(ThemeDictionary.TextFillColorPrimary);
 			args.Graphics.DrawLines(pen, new Point[] {
 				new Point(r.Left, r.Bottom - r.Height / 2),
 				new Point((int)(r.Left + r.Width / 2.5f),  r.Bottom),
 				new Point(r.Right, r.Top)
 			});
 		}
-	}
+
+        protected override void OnRenderToolStripBorder(ToolStripRenderEventArgs e)
+        {
+        }
+    }
 }

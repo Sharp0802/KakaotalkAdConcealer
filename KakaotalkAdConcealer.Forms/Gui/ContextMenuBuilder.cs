@@ -41,8 +41,8 @@ namespace KakaotalkAdConcealer.Forms.Gui
             var menu = new ContextMenuStrip 
             { 
                 Renderer = new ThemeReferencedRenderer(),
-                BackColor = ThemeReferencedColorTable.Background,
-                ForeColor = ThemeReferencedColorTable.Foreground
+                BackColor = ThemeDictionary.ChromeMidium,
+                ForeColor = ThemeDictionary.TextFillColorPrimary
             };
             menu.Items.AddRange(Items.ToArray());
             return menu;

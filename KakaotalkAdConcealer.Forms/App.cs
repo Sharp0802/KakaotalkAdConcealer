@@ -108,7 +108,7 @@ namespace KakaotalkAdConcealer.Forms
             {
                 var item = new ToolStripMenuItem(culture.ToISOCode()) 
                 { 
-                    ForeColor = ThemeReferencedColorTable.Foreground
+                    ForeColor = ThemeDictionary.TextFillColorPrimary
                 };
                 item.Click += (_, _) =>
                 {
