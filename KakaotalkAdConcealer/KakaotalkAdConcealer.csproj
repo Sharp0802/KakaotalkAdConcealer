@@ -35,6 +35,7 @@
 
 	<!-- References -->
 	<ItemGroup>
+		<ProjectReference Include="..\KakaotalkAdConcealer.Core\KakaotalkAdConcealer.Core.csproj" />
 		<ProjectReference Include="..\KakaotalkAdConcealer.Native\KakaotalkAdConcealer.Native.vcxproj" />
 		<PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.0.2" />
 	</ItemGroup>
