@@ -9,7 +9,7 @@ namespace KakaotalkAdConcealer.Gui
 	{
 		private static UISettings Settings { get; } = new UISettings();
 
-		private static Color Background
+		public static Color Background
 		{
 			get
 			{
@@ -18,7 +18,7 @@ namespace KakaotalkAdConcealer.Gui
 			}
 		}
 
-		private static Color Smoke
+		public static Color Smoke
 		{
 			get
 			{
