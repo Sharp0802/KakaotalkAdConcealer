@@ -103,20 +103,21 @@ namespace KakaotalkAdConcealer.Forms
         {
             Instance.CultureUpdated += _ =>
                 language.Text = (Resources.Culture ?? CultureInfo.InvariantCulture).ToISOCode();
-            var cultures = LanguageExtension.GetAvailableCultures();
-            foreach (var culture in cultures)
+            language.DropDown = LanguageExtension
+                .GetAvailableCultures()
+                .Aggregate(new ContextMenuBuilder(), (builder, culture) =>
             {
-                var item = new ToolStripMenuItem(culture.ToISOCode()) 
-                { 
-                    ForeColor = ThemeDictionary.TextFillColorPrimary
-                };
+                
+                var item = new ToolStripMenuItem(culture.ToISOCode());
                 item.Click += (_, _) =>
                 {
                     Resources.Culture = culture;
                     Instance.CultureUpdated?.Invoke(culture);
                 };
-                language.DropDownItems.Add(item);
-            }
+                Instance.CultureUpdated += c => item.Checked = culture == c;
+                return builder.Add(item);
+            })
+                .Build();
         });
 
         /// <summary>
