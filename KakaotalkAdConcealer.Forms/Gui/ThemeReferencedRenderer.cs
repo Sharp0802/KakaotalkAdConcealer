@@ -29,7 +29,8 @@ namespace KakaotalkAdConcealer.Forms.Gui
 		protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs args)
 		{
 			args.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
-			var r = new Rectangle(args.ImageRectangle.Location, args.ImageRectangle.Size);
+			var point = new Point(args.ImageRectangle.Location.X + 4, args.ImageRectangle.Location.Y);
+			var r = new Rectangle(point, args.ImageRectangle.Size);
 			r.Inflate(-2, -4);
 			using var pen = new Pen(ThemeDictionary.TextFillColorPrimary);
 			args.Graphics.DrawLines(pen, new Point[] {
