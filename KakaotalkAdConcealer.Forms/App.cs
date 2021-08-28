@@ -2,12 +2,12 @@
 using System.Globalization;
 using System.Reflection;
 using System.Windows.Forms;
-using KakaotalkAdConcealer.Common;
 using KakaotalkAdConcealer.Concealer;
-using KakaotalkAdConcealer.Gui;
-using KakaotalkAdConcealer.Properties;
+using KakaotalkAdConcealer.Forms.Common;
+using KakaotalkAdConcealer.Forms.Gui;
+using KakaotalkAdConcealer.Forms.Properties;
 
-namespace KakaotalkAdConcealer
+namespace KakaotalkAdConcealer.Forms
 {
     /// <summary>
     /// Application instance

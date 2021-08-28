@@ -1,8 +1,8 @@
 ﻿using System.Globalization;
 using System.Resources;
-using KakaotalkAdConcealer.Properties;
+using KakaotalkAdConcealer.Forms.Properties;
 
-namespace KakaotalkAdConcealer.Gui
+namespace KakaotalkAdConcealer.Forms.Gui
 {
     /// <summary>
     /// Helper for localization

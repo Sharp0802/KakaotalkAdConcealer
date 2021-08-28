@@ -1,9 +1,8 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-
 using Windows.UI.ViewManagement;
 
-namespace KakaotalkAdConcealer.Gui
+namespace KakaotalkAdConcealer.Forms.Gui
 {
 	/// <summary>
 	/// Custom color table for making notifyicon context menu to use color by windows theme

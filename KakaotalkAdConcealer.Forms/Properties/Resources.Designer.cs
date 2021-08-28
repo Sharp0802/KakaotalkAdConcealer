@@ -8,10 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace KakaotalkAdConcealer.Properties {
-    using System;
-    
-    
+namespace KakaotalkAdConcealer.Forms.Properties {
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>

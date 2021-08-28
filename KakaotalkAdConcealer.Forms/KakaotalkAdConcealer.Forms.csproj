@@ -9,7 +9,6 @@
 		<ApplicationIcon>Assets\icon.ico</ApplicationIcon>
 		<LangVersion>10.0</LangVersion>
 		<DebugType>embedded</DebugType>
-		<RootNamespace>KakaotalkAdConcealer</RootNamespace>
 	</PropertyGroup>
 
 	<!-- Publish -->
@@ -27,6 +26,7 @@
 	<ItemGroup>
 	  <EmbeddedResource Update="Properties\Resources.resx">
 	    <Generator>ResXFileCodeGenerator</Generator>
+	    <LastGenOutput>Resources.Designer.cs</LastGenOutput>
 	  </EmbeddedResource>
 		<EmbeddedResource Update="Properties\Resources.ko-kr.resx">
 			<DependentUpon>Resources.resx</DependentUpon>
@@ -39,6 +39,13 @@
 		<ProjectReference Include="..\KakaotalkAdConcealer.Core\KakaotalkAdConcealer.Core.csproj" />
 		<ProjectReference Include="..\KakaotalkAdConcealer.Native\KakaotalkAdConcealer.Native.vcxproj" />
 		<PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.0.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Properties\Resources.Designer.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>Resources.resx</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

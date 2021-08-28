@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace KakaotalkAdConcealer.Gui
+namespace KakaotalkAdConcealer.Forms.Gui
 {
     /// <summary>
     /// Helper for making menu with method chaining

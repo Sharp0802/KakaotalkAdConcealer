@@ -1,7 +1,7 @@
 ﻿using System.Windows.Forms;
 using Microsoft.Win32;
 
-namespace KakaotalkAdConcealer.Common
+namespace KakaotalkAdConcealer.Forms.Common
 {
     /// <summary>
     /// Registry manager for auto startup

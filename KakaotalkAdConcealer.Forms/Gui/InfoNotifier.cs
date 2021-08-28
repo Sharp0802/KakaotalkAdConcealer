@@ -1,7 +1,7 @@
-﻿using KakaotalkAdConcealer.Properties;
+﻿using KakaotalkAdConcealer.Forms.Properties;
 using Microsoft.Toolkit.Uwp.Notifications;
 
-namespace KakaotalkAdConcealer.Gui
+namespace KakaotalkAdConcealer.Forms.Gui
 {
 	/// <summary>
 	/// Helper for showing toast notification

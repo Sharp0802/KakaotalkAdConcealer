@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Windows.Forms;
-using KakaotalkAdConcealer.Properties;
+using KakaotalkAdConcealer.Forms.Properties;
 
-namespace KakaotalkAdConcealer
+namespace KakaotalkAdConcealer.Forms
 {
     internal static class Program
     {

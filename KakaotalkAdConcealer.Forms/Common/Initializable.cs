@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Reflection;
 
-namespace KakaotalkAdConcealer.Common
+namespace KakaotalkAdConcealer.Forms.Common
 {
     /// <summary>
     /// Helper for initializing outside of internal class
