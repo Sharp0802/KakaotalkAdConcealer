@@ -86,7 +86,7 @@ namespace KakaotalkAdConcealer
         private Initializable<ToolStripMenuItem> Title { get; } = new(title =>
         {
             Instance.CultureUpdated += _ => title.Text = Resources.Title;
-            title.ForeColor = Color.Gray;
+            title.ForeColor = ThemeReferencedColorTable.Foreground;
         });
 
         /// <summary>
@@ -97,6 +97,7 @@ namespace KakaotalkAdConcealer
             Instance.CultureUpdated += _ => startup.Text = Resources.ActivateAtStartup;
             startup.Checked = StartupRegister.IsAssigned(AppName);
             startup.Click += (_, _) => startup.Checked = StartupRegister.Toggle(AppName);
+            startup.ForeColor = ThemeReferencedColorTable.Foreground;
         });
 
         /// <summary>
@@ -106,6 +107,7 @@ namespace KakaotalkAdConcealer
         {
             Instance.CultureUpdated += _ =>
                 language.Text = (Resources.Culture ?? CultureInfo.InvariantCulture).ToISOCode();
+            language.ForeColor = ThemeReferencedColorTable.Foreground;
             var cultures = LanguageExtension.GetAvailableCultures();
             foreach (var culture in cultures)
             {
@@ -115,6 +117,7 @@ namespace KakaotalkAdConcealer
                     Resources.Culture = culture;
                     Instance.CultureUpdated?.Invoke(culture);
                 };
+                item.ForeColor = ThemeReferencedColorTable.Foreground;
                 language.DropDownItems.Add(item);
             }
         });
@@ -126,6 +129,7 @@ namespace KakaotalkAdConcealer
         {
             Instance.CultureUpdated += _ => removeAll.Text = Resources.RemoveAllAds;
             removeAll.Click += (_, _) => removeAll.Checked = Instance.Context.ToggleBlockState();
+            removeAll.ForeColor = ThemeReferencedColorTable.Foreground;
         });
 
         /// <summary>
@@ -135,6 +139,7 @@ namespace KakaotalkAdConcealer
         {
             Instance.CultureUpdated += _ => removeEmbedded.Text = Resources.RemoveEmbeddedAdsOnce;
             removeEmbedded.Click += (_, _) => _ = Instance.Context.BlockOnce(BlockType.Embedded);
+            removeEmbedded.ForeColor = ThemeReferencedColorTable.Foreground;
         });
 
         /// <summary>
@@ -144,6 +149,7 @@ namespace KakaotalkAdConcealer
         {
             Instance.CultureUpdated += _ => removePopup.Text = Resources.RemovePopupAdsOnce;
             removePopup.Click += (_, _) => _ = Instance.Context.BlockOnce(BlockType.Popup);
+            removePopup.ForeColor = ThemeReferencedColorTable.Foreground;
         });
 
         /// <summary>
@@ -157,6 +163,7 @@ namespace KakaotalkAdConcealer
                 Application.Exit();
                 Environment.Exit(0);
             };
+            quit.ForeColor = ThemeReferencedColorTable.Foreground;
         });
     }
 }
