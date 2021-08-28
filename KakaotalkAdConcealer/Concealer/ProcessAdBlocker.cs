@@ -50,7 +50,11 @@ namespace KakaotalkAdConcealer.Concealer
                 catch (TaskCanceledException)
                 {
                     // ignored
-				}
+                }
+                catch ()
+                {
+                    // ignored
+                }
             }, token);
         }
 
