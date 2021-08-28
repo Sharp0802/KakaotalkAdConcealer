@@ -1,44 +1,121 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
-using Windows.UI.ViewManagement;
 
 namespace KakaotalkAdConcealer.Forms.Gui
 {
+    using static ThemeDictionary;
+
 	/// <summary>
 	/// Custom color table for making notifyicon context menu to use color by windows theme
 	/// </summary>
 	public class ThemeReferencedColorTable : ProfessionalColorTable
 	{
-		/// <summary>
-		/// Windows ui settings
-		/// </summary>
-		private static UISettings Settings { get; } = new UISettings();
+        public override Color ButtonCheckedGradientBegin => ListLow;
 
-		/// <summary>
-		/// Check theme user is using
-		/// </summary>
-        public static bool IsDarkTheme => Settings.GetColorValue(UIColorType.Background) is Windows.UI.Color { R: 0, G: 0, B: 0 };
+        public override Color ButtonCheckedGradientEnd => ListLow;
 
-        /// <summary>
-        /// Windows background theme color
-        /// </summary>
-        public static Color Background => IsDarkTheme ? Color.FromArgb(43, 43, 43) : Color.FromArgb(242, 242, 242);
+        public override Color ButtonCheckedGradientMiddle => ListLow;
 
-        /// <summary>
-        /// Windows foreground theme color
-        /// </summary>
-        public static Color Foreground => IsDarkTheme ? Color.White : Color.Black;
+        public override Color ButtonCheckedHighlight => ListLow;
 
-        public override Color MenuItemBorder => Foreground;
+        public override Color ButtonCheckedHighlightBorder => ListLow;
 
-		public override Color MenuItemSelected => Foreground;
+        public override Color ButtonPressedBorder => ListMedium;
 
-		public override Color ToolStripDropDownBackground => Background;
+        public override Color ButtonPressedGradientBegin => ListMedium;
 
-		public override Color ImageMarginGradientBegin => Background;
+        public override Color ButtonPressedGradientEnd => ListMedium;
 
-		public override Color ImageMarginGradientMiddle => Background;
+        public override Color ButtonPressedGradientMiddle => ListMedium;
 
-		public override Color ImageMarginGradientEnd => Background;
-	}
+        public override Color ButtonPressedHighlight => ListMedium;
+
+        public override Color ButtonPressedHighlightBorder => ListMedium;
+
+        public override Color ButtonSelectedBorder => ListLow;
+
+        public override Color ButtonSelectedGradientBegin => ListLow;
+
+        public override Color ButtonSelectedGradientEnd => ListLow;
+
+        public override Color ButtonSelectedGradientMiddle => ListLow;
+
+        public override Color ButtonSelectedHighlight => ListLow;
+
+        public override Color ButtonSelectedHighlightBorder => ListLow;
+
+        public override Color CheckBackground => ListLow;
+
+        public override Color CheckPressedBackground => ListMedium;
+
+        public override Color CheckSelectedBackground => ListLow;
+
+        public override Color MenuBorder => ListLow;
+
+        public override Color MenuItemBorder => ListLow;
+
+        public override Color MenuItemPressedGradientBegin => ListMedium;
+
+		public override Color MenuItemPressedGradientEnd => ListMedium;
+
+        public override Color MenuItemPressedGradientMiddle => ListMedium;
+
+        public override Color MenuItemSelected => ListLow;
+
+        public override Color MenuItemSelectedGradientBegin => ListLow;
+
+        public override Color MenuItemSelectedGradientEnd => ListLow;
+
+        public override Color MenuStripGradientBegin => ChromeMidium;
+
+        public override Color MenuStripGradientEnd => ChromeMidium;
+
+        public override Color ToolStripDropDownBackground => ChromeMidium;
+
+		public override Color ImageMarginGradientBegin => ChromeMidium;
+
+		public override Color ImageMarginGradientEnd => ChromeMidium;
+
+		public override Color ImageMarginGradientMiddle => ChromeMidium;
+
+        public override Color ImageMarginRevealedGradientBegin => ListLow;
+
+        public override Color ImageMarginRevealedGradientEnd => ListLow;
+
+        public override Color ImageMarginRevealedGradientMiddle => ListLow;
+
+        public override Color OverflowButtonGradientBegin => ListLow;
+
+        public override Color OverflowButtonGradientEnd => ListLow;
+
+        public override Color OverflowButtonGradientMiddle => ListLow;
+
+        public override Color RaftingContainerGradientBegin => ChromeMidium;
+
+        public override Color RaftingContainerGradientEnd => ChromeMidium;
+
+        public override Color SeparatorDark => ListMedium;
+
+        public override Color SeparatorLight => TextFillColorPrimary;
+
+        public override Color StatusStripGradientBegin => ChromeMidium;
+
+        public override Color StatusStripGradientEnd => ChromeMidium;
+
+        public override Color ToolStripBorder => ChromeMidium;
+
+        public override Color ToolStripContentPanelGradientBegin => ChromeMidium;
+
+        public override Color ToolStripContentPanelGradientEnd => ChromeMidium;
+
+        public override Color ToolStripGradientBegin => ChromeMidium;
+
+        public override Color ToolStripGradientEnd => ChromeMidium;
+
+        public override Color ToolStripGradientMiddle => ChromeMidium;
+
+        public override Color ToolStripPanelGradientBegin => ChromeMidium;
+
+        public override Color ToolStripPanelGradientEnd => ChromeMidium;
+    }
 }
