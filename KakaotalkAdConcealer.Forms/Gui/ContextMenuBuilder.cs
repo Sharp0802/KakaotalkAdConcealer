@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using Microsoft.Win32;
+
+using System.Windows.Forms;
 
 namespace KakaotalkAdConcealer.Forms.Gui
 {
@@ -44,11 +46,12 @@ namespace KakaotalkAdConcealer.Forms.Gui
                 Renderer = new ThemeReferencedRenderer { VerticalPadding = padding },
                 ForeColor = ThemeDictionary.TextFillColorPrimary
             };
+            SystemEvents.UserPreferenceChanged += (sender, args) => menu.ForeColor = ThemeDictionary.TextFillColorPrimary;
             var array = Items.ToArray();
             for (int i = 0; i < array.Length; ++i)
             {
                 array[i].Padding = new Padding(0, padding, 0, padding);
-                array[i].Margin = new Padding(0, i == 0 ? 5 : 0, 0, i == array.Length - 1 ? 5 : 0);
+                array[i].Margin += new Padding(0, i == 0 ? 5 : 0, 0, i == array.Length - 1 ? 5 : 0);
             }
             menu.Items.AddRange(array);
             return menu;
