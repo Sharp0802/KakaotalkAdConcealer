@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31423.177
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KakaotalkAdConcealer", "KakaotalkAdConcealer\KakaotalkAdConcealer.csproj", "{AFB64861-898E-4315-9906-CCDD5C8B6D37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KakaotalkAdConcealer.Forms", "KakaotalkAdConcealer.Forms\KakaotalkAdConcealer.Forms.csproj", "{AFB64861-898E-4315-9906-CCDD5C8B6D37}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KakaotalkAdConcealer.Native", "KakaotalkAdConcealer.Native\KakaotalkAdConcealer.Native.vcxproj", "{1E21656B-0874-48F7-944C-2EA442D03799}"
 EndProject
