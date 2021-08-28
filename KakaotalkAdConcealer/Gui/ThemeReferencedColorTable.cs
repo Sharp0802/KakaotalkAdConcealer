@@ -30,7 +30,7 @@ namespace KakaotalkAdConcealer.Gui
 		/// <summary>
 		/// Windows foreground theme color
 		/// </summary>
-		public static Color Smoke
+		public static Color Foreground
 		{
 			get
 			{
@@ -39,9 +39,9 @@ namespace KakaotalkAdConcealer.Gui
 			}
 		}
 
-		public override Color MenuItemBorder => Smoke;
+		public override Color MenuItemBorder => Foreground;
 
-		public override Color MenuItemSelected => Smoke;
+		public override Color MenuItemSelected => Foreground;
 
 		public override Color ToolStripDropDownBackground => Background;
 

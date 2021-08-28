@@ -15,7 +15,7 @@ namespace KakaotalkAdConcealer.Gui
 			args.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			var r = new Rectangle(args.ArrowRectangle.Location, args.ArrowRectangle.Size);
 			r.Inflate(-2, -6);
-			using var pen = new Pen(ThemeReferencedColorTable.Smoke);
+			using var pen = new Pen(ThemeReferencedColorTable.Foreground);
 			args.Graphics.DrawLines(pen, new Point[] {
 				new Point(r.Left, r.Top),
 				new Point(r.Right, r.Top + r.Height / 2),
@@ -28,7 +28,7 @@ namespace KakaotalkAdConcealer.Gui
 			args.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			var r = new Rectangle(args.ImageRectangle.Location, args.ImageRectangle.Size);
 			r.Inflate(-4, -6);
-			using var pen = new Pen(ThemeReferencedColorTable.Smoke);
+			using var pen = new Pen(ThemeReferencedColorTable.Foreground);
 			args.Graphics.DrawLines(pen, new Point[] {
 				new Point(r.Left, r.Bottom - r.Height / 2),
 				new Point(r.Left + r.Width / 3,  r.Bottom),
