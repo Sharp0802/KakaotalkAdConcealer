@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KakaotalkAdConcealer.Native
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KakaotalkAdConcealer.Core", "KakaotalkAdConcealer.Core\KakaotalkAdConcealer.Core.csproj", "{DB7C8EB0-9CAA-4403-8697-0436258379D9}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KakaotalkAdConcealer.WinUI", "KakaotalkAdConcealer.WinUI\KakaotalkAdConcealer.WinUI.csproj", "{2938A2BE-BF47-426A-827A-E7ADAAE42112}"
+EndProject
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "KakaotalkAdConcealer.WinUI.Package", "KakaotalkAdConcealer.WinUI.Package\KakaotalkAdConcealer.WinUI.Package.wapproj", "{25022D47-5A74-4798-AE1C-8ECF358E00A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +45,26 @@ Global
 		{DB7C8EB0-9CAA-4403-8697-0436258379D9}.Release|x64.Build.0 = Release|x64
 		{DB7C8EB0-9CAA-4403-8697-0436258379D9}.Release|x86.ActiveCfg = Release|x86
 		{DB7C8EB0-9CAA-4403-8697-0436258379D9}.Release|x86.Build.0 = Release|x86
+		{2938A2BE-BF47-426A-827A-E7ADAAE42112}.Debug|x64.ActiveCfg = Debug|x64
+		{2938A2BE-BF47-426A-827A-E7ADAAE42112}.Debug|x64.Build.0 = Debug|x64
+		{2938A2BE-BF47-426A-827A-E7ADAAE42112}.Debug|x86.ActiveCfg = Debug|x86
+		{2938A2BE-BF47-426A-827A-E7ADAAE42112}.Debug|x86.Build.0 = Debug|x86
+		{2938A2BE-BF47-426A-827A-E7ADAAE42112}.Release|x64.ActiveCfg = Release|x64
+		{2938A2BE-BF47-426A-827A-E7ADAAE42112}.Release|x64.Build.0 = Release|x64
+		{2938A2BE-BF47-426A-827A-E7ADAAE42112}.Release|x86.ActiveCfg = Release|x86
+		{2938A2BE-BF47-426A-827A-E7ADAAE42112}.Release|x86.Build.0 = Release|x86
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Debug|x64.ActiveCfg = Debug|x64
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Debug|x64.Build.0 = Debug|x64
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Debug|x64.Deploy.0 = Debug|x64
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Debug|x86.ActiveCfg = Debug|x86
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Debug|x86.Build.0 = Debug|x86
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Debug|x86.Deploy.0 = Debug|x86
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Release|x64.ActiveCfg = Release|x64
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Release|x64.Build.0 = Release|x64
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Release|x64.Deploy.0 = Release|x64
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Release|x86.ActiveCfg = Release|x86
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Release|x86.Build.0 = Release|x86
+		{25022D47-5A74-4798-AE1C-8ECF358E00A3}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
