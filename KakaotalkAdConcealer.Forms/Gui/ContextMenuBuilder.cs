@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 
 namespace KakaotalkAdConcealer.Forms.Gui
 {
@@ -38,13 +39,17 @@ namespace KakaotalkAdConcealer.Forms.Gui
         /// <returns>Builded menu strip</returns>
         public ContextMenuStrip Build()
         {
-            var menu = new ContextMenuStrip 
-            { 
+            var menu = new ContextMenuStrip
+            {
                 Renderer = new ThemeReferencedRenderer(),
-                BackColor = ThemeDictionary.ChromeMidium,
                 ForeColor = ThemeDictionary.TextFillColorPrimary
             };
-            menu.Items.AddRange(Items.ToArray());
+            var array = Items.ToArray();
+            foreach (var item in array)
+            {
+                item.Padding = new Padding(0, 4, 0, 4);
+            }
+            menu.Items.AddRange(array);
             return menu;
         }
     }
