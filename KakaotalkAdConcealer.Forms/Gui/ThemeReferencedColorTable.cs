@@ -15,30 +15,21 @@ namespace KakaotalkAdConcealer.Forms.Gui
 		private static UISettings Settings { get; } = new UISettings();
 
 		/// <summary>
-		/// Windows background theme color
+		/// Check theme user is using
 		/// </summary>
-		public static Color Background
-		{
-			get
-			{
-				var color = Settings.GetColorValue(UIColorType.Background);
-				return Color.FromArgb(color.A, color.R, color.G, color.B);
-			}
-		}
+        public static bool IsDarkTheme => Settings.GetColorValue(UIColorType.Background) is Windows.UI.Color { R: 0, G: 0, B: 0 };
 
-		/// <summary>
-		/// Windows foreground theme color
-		/// </summary>
-		public static Color Foreground
-		{
-			get
-			{
-				var color = Settings.GetColorValue(UIColorType.Foreground);
-				return Color.FromArgb(color.A, color.R, color.G, color.B);
-			}
-		}
+        /// <summary>
+        /// Windows background theme color
+        /// </summary>
+        public static Color Background => IsDarkTheme ? Color.FromArgb(43, 43, 43) : Color.FromArgb(242, 242, 242);
 
-		public override Color MenuItemBorder => Foreground;
+        /// <summary>
+        /// Windows foreground theme color
+        /// </summary>
+        public static Color Foreground => IsDarkTheme ? Color.White : Color.Black;
+
+        public override Color MenuItemBorder => Foreground;
 
 		public override Color MenuItemSelected => Foreground;
 
