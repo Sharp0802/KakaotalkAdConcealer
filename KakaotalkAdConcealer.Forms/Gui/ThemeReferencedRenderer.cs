@@ -20,7 +20,7 @@ namespace KakaotalkAdConcealer.Forms.Gui
 		{
 			args.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			var r = new Rectangle(args.ArrowRectangle.Location, args.ArrowRectangle.Size);
-			r.Inflate(-2, -6);
+			r.Inflate(-2, -4);
 			using var pen = new Pen(ThemeReferencedColorTable.Foreground);
 			args.Graphics.DrawLines(pen, new Point[] {
 				new Point(r.Left, r.Top),
@@ -33,7 +33,7 @@ namespace KakaotalkAdConcealer.Forms.Gui
 		{
 			args.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
 			var r = new Rectangle(args.ImageRectangle.Location, args.ImageRectangle.Size);
-			r.Inflate(-2, -3);
+			r.Inflate(-2, -4);
 			using var pen = new Pen(ThemeReferencedColorTable.Foreground);
 			args.Graphics.DrawLines(pen, new Point[] {
 				new Point(r.Left, r.Bottom - r.Height / 2),
