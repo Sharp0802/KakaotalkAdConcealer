@@ -38,7 +38,12 @@ namespace KakaotalkAdConcealer.Forms.Gui
         /// <returns>Builded menu strip</returns>
         public ContextMenuStrip Build()
         {
-            var menu = new ContextMenuStrip { Renderer = new ThemeReferencedRenderer() };
+            var menu = new ContextMenuStrip 
+            { 
+                Renderer = new ThemeReferencedRenderer(),
+                BackColor = ThemeReferencedColorTable.Background,
+                ForeColor = ThemeReferencedColorTable.Foreground
+            };
             menu.Items.AddRange(Items.ToArray());
             return menu;
         }

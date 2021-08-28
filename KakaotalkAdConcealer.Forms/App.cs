@@ -84,7 +84,6 @@ namespace KakaotalkAdConcealer.Forms
         private Initializable<ToolStripMenuItem> Title { get; } = new(title =>
         {
             Instance.CultureUpdated += _ => title.Text = Resources.Title;
-            title.ForeColor = ThemeReferencedColorTable.Foreground;
         });
 
         /// <summary>
@@ -95,7 +94,6 @@ namespace KakaotalkAdConcealer.Forms
             Instance.CultureUpdated += _ => startup.Text = Resources.ActivateAtStartup;
             startup.Checked = StartupRegister.IsAssigned(AppName);
             startup.Click += (_, _) => startup.Checked = StartupRegister.Toggle(AppName);
-            startup.ForeColor = ThemeReferencedColorTable.Foreground;
         });
 
         /// <summary>
@@ -105,17 +103,18 @@ namespace KakaotalkAdConcealer.Forms
         {
             Instance.CultureUpdated += _ =>
                 language.Text = (Resources.Culture ?? CultureInfo.InvariantCulture).ToISOCode();
-            language.ForeColor = ThemeReferencedColorTable.Foreground;
             var cultures = LanguageExtension.GetAvailableCultures();
             foreach (var culture in cultures)
             {
-                var item = new ToolStripMenuItem(culture.ToISOCode());
+                var item = new ToolStripMenuItem(culture.ToISOCode()) 
+                { 
+                    ForeColor = ThemeReferencedColorTable.Foreground
+                };
                 item.Click += (_, _) =>
                 {
                     Resources.Culture = culture;
                     Instance.CultureUpdated?.Invoke(culture);
                 };
-                item.ForeColor = ThemeReferencedColorTable.Foreground;
                 language.DropDownItems.Add(item);
             }
         });
@@ -127,7 +126,6 @@ namespace KakaotalkAdConcealer.Forms
         {
             Instance.CultureUpdated += _ => removeAll.Text = Resources.RemoveAllAds;
             removeAll.Click += (_, _) => removeAll.Checked = Instance.Context.ToggleBlockState();
-            removeAll.ForeColor = ThemeReferencedColorTable.Foreground;
         });
 
         /// <summary>
@@ -141,7 +139,6 @@ namespace KakaotalkAdConcealer.Forms
                 Application.Exit();
                 Environment.Exit(0);
             };
-            quit.ForeColor = ThemeReferencedColorTable.Foreground;
         });
     }
 }
