@@ -33,3 +33,17 @@ KakaotalkAdConcealer는 PC버전 카카오톡의 내장광고와 팝업을 없�
 [MIT 라이선스](./LICENSE).
 
 세부사항은 [이곳](./LICENSE)을 참조해주세요.
+
+## Preview
+
+- 전 / 후
+
+![](./imgs/pre-view.png)
+
+- 트레이에서 작동
+
+![](./imgs/pre-tray.png)
+
+- 시작 알림
+
+![](./imgs/pre-notify.png)

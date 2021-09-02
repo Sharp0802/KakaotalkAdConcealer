@@ -35,3 +35,17 @@ In practice, this also tends to consume slightly more memory than [this release(
 Only [MIT License](./LICENSE).
 
 Details are in the [file](./LICENSE).
+
+## Preview
+
+- Before / After
+
+![](./imgs/pre-view.png)
+
+- Run in tray
+
+![](./imgs/pre-tray.png)
+
+- Startup notification
+
+![](./imgs/pre-notify.png)
