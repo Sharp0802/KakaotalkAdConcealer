@@ -2,6 +2,7 @@
 #include <string>
 
 using namespace System::ComponentModel;
+using namespace System::Runtime::InteropServices;
 using namespace KakaotalkAdConcealer::Native;
 
 void Validate(int result, const std::string name)
@@ -11,37 +12,44 @@ void Validate(int result, const std::string name)
 		throw gcnew Win32Exception(result, msg);
 }
 
-private ref class CallbackConverter abstract sealed
+typedef BOOL(__stdcall* CallbackPointer)(HWND, LPARAM);
+
+[UnmanagedFunctionPointerAttribute(CallingConvention::StdCall)]
+private delegate BOOL CallbackDelegate(HWND, LPARAM);
+
+private ref class CallbackConverter sealed : IDisposable
 {
 private:
-	static Object^ _locker = gcnew Object();
+	property Func<IntPtr, IntPtr, bool>^ Callback;
+	property GCHandle Handle;
+	
 public:
-	static property Object^ Locker { Object^ get() { return _locker; } }
-	static property Func<IntPtr, IntPtr, bool>^ Callback;
+	BOOL Call(HWND handle, LPARAM param)
+	{
+		return CallbackConverter::Callback(IntPtr(handle), IntPtr(param));
+	}
+
+	CallbackConverter(Func<IntPtr, IntPtr, bool>^ callback)
+	{
+		Callback = callback;
+		Handle = GCHandle::Alloc(Callback, GCHandleType::Pinned);
+	}
+
+	~CallbackConverter()
+	{
+		if (Handle.IsAllocated)
+			Handle.Free();
+	}
 };
-BOOL __stdcall EnumChildWindowsCallbackCall(HWND handle, LPARAM param)
-{
-	return CallbackConverter::Callback(IntPtr(handle), IntPtr(param));
-}
+
 void Win32::EnumChildWindows(IntPtr window, Func<IntPtr, IntPtr, bool>^ callback, IntPtr param)
 {
-	BOOL res;
-	bool taken = false;
-	try
-	{
-		Monitor::Enter(CallbackConverter::Locker, taken);
-
-		CallbackConverter::Callback = callback;
-		res = ::EnumChildWindows(
-			static_cast<HWND>(window.ToPointer()),
-			EnumChildWindowsCallbackCall,
-			static_cast<LPARAM>(param.ToInt64()));
-	}
-	finally
-	{
-		if (taken)
-			Monitor::Exit(CallbackConverter::Locker);
-	}
+	auto cvt = gcnew CallbackConverter(callback);
+	auto del = gcnew CallbackDelegate(cvt, &CallbackConverter::Call);
+	auto res = ::EnumChildWindows(
+		static_cast<HWND>(window.ToPointer()),
+		static_cast<CallbackPointer>(Marshal::GetFunctionPointerForDelegate(del).ToPointer()),
+		static_cast<LPARAM>(param.ToInt64()));
 	Validate(res, __func__);
 }
 
