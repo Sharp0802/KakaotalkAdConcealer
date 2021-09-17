@@ -7,9 +7,8 @@ using namespace KakaotalkAdConcealer::Native;
 
 void Validate(int result, const std::string name)
 {
-	auto msg = gcnew String(("Runtime exception occurred while executing method '" + name + "'.").c_str());
 	if (result != 0)
-		throw gcnew Win32Exception(result, msg);
+		throw gcnew Win32Exception(result, gcnew String(("Runtime exception occurred while executing method '" + name + "'.").c_str()));
 }
 
 typedef BOOL(__stdcall* CallbackPointer)(HWND, LPARAM);
