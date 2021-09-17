@@ -21,7 +21,7 @@ namespace KakaotalkAdConcealer.Common
         {
             if (obj is null)
                 throw new ArgumentNullException(nameof(obj));
-            Handle = GCHandle.Alloc(obj);
+            Handle = GCHandle.Alloc(obj, GCHandleType.Pinned);
         }
 
         ~GCHandleContext() => Dispose();
