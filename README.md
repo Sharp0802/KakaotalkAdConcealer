@@ -15,7 +15,7 @@ You'll be able to stop watching boring commercials.
 
 This is an experimental work made to change the overall structure and improve the code readability of [blurfx/KakaoTalkAdBlock](https://github.com/blurfx/KakaoTalkAdBlock).
 
-Refactored for code readability, changing existing P/Invoke-style Win32 API calls to use the C+/CLI layer.
+Refactored for code readability, changing existing P/Invoke-style Win32 API calls to use the C++/CLI layer.
 
 That said, this may not be a good choice for end users.
 
