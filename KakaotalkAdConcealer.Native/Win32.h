@@ -20,33 +20,7 @@ namespace KakaotalkAdConcealer::Native
 {
 	public ref class Win32 abstract sealed
 	{
-	private:
-		static Object^ _locker;
-		static bool _exceptionWhenFail;
-
 	public:
-		static property bool ExceptionWhenFail
-		{
-			bool get()
-			{
-				return _exceptionWhenFail;
-			}
-			void set(bool v)
-			{
-				bool taken = false;
-				try
-				{
-					Monitor::Enter(_locker, taken);
-					_exceptionWhenFail = v;
-				}
-				finally
-				{
-					if (taken)
-						Monitor::Exit(_locker);
-				}
-			}
-		}
-
 #undef EnumChildWindows
 		static void EnumChildWindows(IntPtr window, Func<IntPtr, IntPtr, bool>^ callback, IntPtr param);
 #undef FindWindow
