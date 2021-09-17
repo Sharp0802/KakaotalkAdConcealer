@@ -1,11 +1,14 @@
 #include "Win32.h"
+#include <string>
 
+using namespace System::ComponentModel;
 using namespace KakaotalkAdConcealer::Native;
 
-void Validate(int result)
+void Validate(int result, const std::string name)
 {
-	if (result == 0 && Win32::ExceptionWhenFail)
-		throw gcnew ExternalException();
+	auto msg = gcnew String(("Runtime exception occurred while executing method '" + name + "'.").c_str());
+	if (result != 0)
+		throw gcnew Win32Exception(result, msg);
 }
 
 private ref class CallbackConverter abstract sealed
@@ -39,7 +42,7 @@ void Win32::EnumChildWindows(IntPtr window, Func<IntPtr, IntPtr, bool>^ callback
 		if (taken)
 			Monitor::Exit(CallbackConverter::Locker);
 	}
-	Validate(res);
+	Validate(res, __func__);
 }
 
 IntPtr Win32::FindWindow(IntPtr parent, IntPtr child, String^ cls, String^ window)
@@ -58,7 +61,7 @@ String^ Win32::GetClassName(IntPtr window)
 {
 	wchar_t text[256];
 	auto res = ::GetClassNameW(static_cast<HWND>(window.ToPointer()), text, 256);
-	Validate(res);
+	Validate(res, __func__);
 	return gcnew String(text);
 }
 
@@ -72,7 +75,7 @@ String^ Win32::GetWindowText(IntPtr window)
 {
 	wchar_t text[256];
 	auto res = ::GetWindowTextW(static_cast<HWND>(window.ToPointer()), text, 256);
-	Validate(res);
+	Validate(res, __func__);
 	return gcnew String(text);
 }
 
@@ -80,7 +83,7 @@ Rect Win32::GetWindowRect(IntPtr window)
 {
 	tagRECT rect;
 	auto res = ::GetWindowRect(static_cast<HWND>(window.ToPointer()), &rect);
-	Validate(res);
+	Validate(res, __func__);
 	return Rect(rect.top, rect.left, rect.bottom, rect.right);
 }
 
@@ -89,7 +92,7 @@ void Win32::ShowWindow(IntPtr window, ShowingFlag flag)
 	auto res = ::ShowWindow(
 		static_cast<HWND>(window.ToPointer()),
 		static_cast<int32_t>(flag));
-	Validate(res);
+	Validate(res, __func__);
 }
 
 IntPtr Win32::SendMessage(IntPtr handle, UINT32 msg)
