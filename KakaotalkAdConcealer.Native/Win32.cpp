@@ -1,15 +1,11 @@
 #include "Win32.h"
 #include <string>
 
+using namespace std;
+
 using namespace System::ComponentModel;
 using namespace System::Runtime::InteropServices;
 using namespace KakaotalkAdConcealer::Native;
-
-void Validate(int result, const std::string name)
-{
-	if (result != 0)
-		throw gcnew Win32Exception(result, gcnew String(("Runtime exception occurred while executing method '" + name + "'.").c_str()));
-}
 
 typedef BOOL(__stdcall* CallbackPointer)(HWND, LPARAM);
 
@@ -21,7 +17,7 @@ private ref class CallbackConverter sealed : IDisposable
 private:
 	property Func<IntPtr, IntPtr, bool>^ Callback;
 	property GCHandle Handle;
-	
+
 public:
 	BOOL Call(HWND handle, LPARAM param)
 	{
@@ -45,11 +41,10 @@ void Win32::EnumChildWindows(IntPtr window, Func<IntPtr, IntPtr, bool>^ callback
 {
 	auto cvt = gcnew CallbackConverter(callback);
 	auto del = gcnew CallbackDelegate(cvt, &CallbackConverter::Call);
-	auto res = ::EnumChildWindows(
+	::EnumChildWindows(
 		static_cast<HWND>(window.ToPointer()),
 		static_cast<CallbackPointer>(Marshal::GetFunctionPointerForDelegate(del).ToPointer()),
 		static_cast<LPARAM>(param.ToInt64()));
-	Validate(res, __func__);
 }
 
 IntPtr Win32::FindWindow(IntPtr parent, IntPtr child, String^ cls, String^ window)
@@ -67,8 +62,7 @@ IntPtr Win32::FindWindow(IntPtr parent, IntPtr child, String^ cls, String^ windo
 String^ Win32::GetClassName(IntPtr window)
 {
 	wchar_t text[256];
-	auto res = ::GetClassNameW(static_cast<HWND>(window.ToPointer()), text, 256);
-	Validate(res, __func__);
+	::GetClassNameW(static_cast<HWND>(window.ToPointer()), text, 256);
 	return gcnew String(text);
 }
 
@@ -81,25 +75,22 @@ IntPtr Win32::GetParent(IntPtr window)
 String^ Win32::GetWindowText(IntPtr window)
 {
 	wchar_t text[256];
-	auto res = ::GetWindowTextW(static_cast<HWND>(window.ToPointer()), text, 256);
-	Validate(res, __func__);
+	::GetWindowTextW(static_cast<HWND>(window.ToPointer()), text, 256);
 	return gcnew String(text);
 }
 
 Rect Win32::GetWindowRect(IntPtr window)
 {
 	tagRECT rect;
-	auto res = ::GetWindowRect(static_cast<HWND>(window.ToPointer()), &rect);
-	Validate(res, __func__);
+	::GetWindowRect(static_cast<HWND>(window.ToPointer()), &rect);
 	return Rect(rect.top, rect.left, rect.bottom, rect.right);
 }
 
 void Win32::ShowWindow(IntPtr window, ShowingFlag flag)
 {
-	auto res = ::ShowWindow(
+	::ShowWindow(
 		static_cast<HWND>(window.ToPointer()),
 		static_cast<int32_t>(flag));
-	Validate(res, __func__);
 }
 
 IntPtr Win32::SendMessage(IntPtr handle, UINT32 msg)
@@ -113,16 +104,14 @@ IntPtr Win32::SendMessage(IntPtr handle, UINT32 msg)
 
 void Win32::SetWindowPos(IntPtr window, IntPtr zOrder, Vector pos, Vector size, SizingFlag flag)
 {
-	auto res = ::SetWindowPos(
+	::SetWindowPos(
 		static_cast<HWND>(window.ToPointer()),
 		static_cast<HWND>(zOrder.ToPointer()),
 		pos.X, pos.Y, size.X, size.Y,
 		static_cast<uint32_t>(flag));
-	Validate(res, __func__);
 }
 
 void Win32::UpdateWindow(IntPtr window)
 {
-	auto res = ::UpdateWindow(static_cast<HWND>(window.ToPointer()));
-	Validate(res, __func__);
+	::UpdateWindow(static_cast<HWND>(window.ToPointer()));
 }
