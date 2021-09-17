@@ -111,11 +111,11 @@ void Win32::SetWindowPos(IntPtr window, IntPtr zOrder, Vector pos, Vector size, 
 		static_cast<HWND>(zOrder.ToPointer()),
 		pos.X, pos.Y, size.X, size.Y,
 		static_cast<uint32_t>(flag));
-	Validate(res);
+	Validate(res, __func__);
 }
 
 void Win32::UpdateWindow(IntPtr window)
 {
 	auto res = ::UpdateWindow(static_cast<HWND>(window.ToPointer()));
-	Validate(res);
+	Validate(res, __func__);
 }
