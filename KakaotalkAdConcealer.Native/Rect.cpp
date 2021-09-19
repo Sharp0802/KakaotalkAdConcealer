@@ -2,7 +2,7 @@
 
 using namespace KakaotalkAdConcealer::Native;
 
-Rect::Rect(long top, long left, long bottom, long right)
+Rect::Rect(const long top, const long left, const long bottom, const long right)
 	: _top(top), _left(left), _bottom(bottom), _right(right)
 {
 }
