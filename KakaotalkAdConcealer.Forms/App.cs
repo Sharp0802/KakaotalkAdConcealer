@@ -116,7 +116,7 @@ namespace KakaotalkAdConcealer.Forms
                     Resources.Culture = culture;
                     Instance.CultureUpdated?.Invoke(culture);
                 };
-                Instance.CultureUpdated += c => item.Checked = culture == c;
+                Instance.CultureUpdated += c => item.Checked = Equals(culture, c);
                 return builder.Add(item);
             })
                 .Build();
