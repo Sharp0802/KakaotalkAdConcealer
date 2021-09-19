@@ -26,6 +26,7 @@ namespace KakaotalkAdConcealer.Forms
 
         private static void OnUnhandledException(object sender, UnhandledExceptionEventArgs args)
         {
+            // ReSharper disable once LocalizableElement
             MessageBox.Show(null, args.ExceptionObject.ToString(), "Fatal", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
