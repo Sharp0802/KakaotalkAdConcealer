@@ -14,7 +14,7 @@ namespace KakaotalkAdConcealer.Forms.Gui
         /// <summary>
         /// Check theme user is using
         /// </summary>
-        public static bool IsDarkTheme => Settings.GetColorValue(UIColorType.Background) is Windows.UI.Color { R: 0, G: 0, B: 0 };
+        public static bool IsDarkTheme => Settings.GetColorValue(UIColorType.Background) is { R: 0, G: 0, B: 0 };
 
         public static Color BaseMedium => IsDarkTheme ? Color.FromArgb(154, 154, 154) : Color.FromArgb(137, 137, 137);
 
