@@ -1,4 +1,6 @@
-﻿using KakaotalkAdConcealer.Core.Common;
+﻿using System;
+using System.Threading;
+using KakaotalkAdConcealer.Core.Common;
 
 namespace KakaotalkAdConcealer.Core
 {

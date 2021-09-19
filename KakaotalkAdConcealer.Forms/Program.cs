@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Threading;
+using System.Windows.Forms;
 using KakaotalkAdConcealer.Forms.Properties;
 
 namespace KakaotalkAdConcealer.Forms

@@ -1,4 +1,5 @@
-﻿using Microsoft.Win32;
+﻿using System.Collections.Generic;
+using Microsoft.Win32;
 
 using System.Windows.Forms;
 
