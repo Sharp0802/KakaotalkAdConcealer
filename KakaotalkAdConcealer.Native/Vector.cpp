@@ -2,6 +2,6 @@
 
 using namespace KakaotalkAdConcealer::Native;
 
-Vector::Vector(int x, int y) : _x(x), _y(y)
+Vector::Vector(const int x, const int y) : _x(x), _y(y)
 {
 }
