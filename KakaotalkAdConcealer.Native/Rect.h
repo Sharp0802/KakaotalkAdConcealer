@@ -11,7 +11,7 @@ namespace KakaotalkAdConcealer::Native
 		long _right;
 
 	public:
-		Rect(const long top, const long left, const long bottom, const long right);
+		Rect(long top, long left, long bottom, long right);
 
 		property long Top
 		{
