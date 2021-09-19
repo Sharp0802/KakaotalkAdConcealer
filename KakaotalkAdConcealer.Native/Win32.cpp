@@ -1,5 +1,6 @@
 #include "Win32.h"
 #include <string>
+#include <vcclr.h>
 
 using namespace std;
 
