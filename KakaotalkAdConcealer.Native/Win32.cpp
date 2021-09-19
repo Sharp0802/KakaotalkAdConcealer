@@ -19,7 +19,7 @@ private:
 	property GCHandle Handle;
 
 public:
-	BOOL Call(HWND handle, LPARAM param)
+	BOOL Call(const HWND handle, const LPARAM param)
 	{
 		return CallbackConverter::Callback(IntPtr(handle), IntPtr(param));
 	}
@@ -49,13 +49,13 @@ void Win32::EnumChildWindows(IntPtr window, Func<IntPtr, IntPtr, bool>^ callback
 
 IntPtr Win32::FindWindow(IntPtr parent, IntPtr child, String^ cls, String^ window)
 {
-	pin_ptr<const wchar_t> nCls = PtrToStringChars(cls);
-	pin_ptr<const wchar_t> nWindow = PtrToStringChars(window);
-	auto res = ::FindWindowExW(
+	const pin_ptr<const wchar_t> nCls = PtrToStringChars(cls);
+	const pin_ptr<const wchar_t> nWindow = PtrToStringChars(window);
+	const auto res = ::FindWindowExW(
 		static_cast<HWND>(parent.ToPointer()),
 		static_cast<HWND>(child.ToPointer()),
-		static_cast<LPCWSTR>(nCls),
-		static_cast<LPCWSTR>(nWindow));
+		nCls,
+		nWindow);
 	return IntPtr(res);
 }
 
@@ -68,7 +68,7 @@ String^ Win32::GetClassName(IntPtr window)
 
 IntPtr Win32::GetParent(IntPtr window)
 {
-	auto res = ::GetParent(static_cast<HWND>(window.ToPointer()));
+	const auto res = ::GetParent(static_cast<HWND>(window.ToPointer()));
 	return IntPtr(res);
 }
 
