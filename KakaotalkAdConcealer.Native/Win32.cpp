@@ -13,11 +13,10 @@ typedef BOOL(__stdcall* CallbackPointer)(HWND, LPARAM);
 [UnmanagedFunctionPointerAttribute(CallingConvention::StdCall)]
 private delegate BOOL CallbackDelegate(HWND, LPARAM);
 
-private ref class CallbackConverter sealed : IDisposable
+private ref class CallbackConverter sealed
 {
 private:
 	property Func<IntPtr, IntPtr, bool>^ Callback;
-	property GCHandle Handle;
 
 public:
 	BOOL Call(const HWND handle, const LPARAM param)
@@ -28,13 +27,6 @@ public:
 	CallbackConverter(Func<IntPtr, IntPtr, bool>^ callback)
 	{
 		Callback = callback;
-		Handle = GCHandle::Alloc(Callback, GCHandleType::Pinned);
-	}
-
-	~CallbackConverter()
-	{
-		if (Handle.IsAllocated)
-			Handle.Free();
 	}
 };
 
@@ -42,10 +34,20 @@ void Win32::EnumChildWindows(IntPtr window, Func<IntPtr, IntPtr, bool>^ callback
 {
 	auto cvt = gcnew CallbackConverter(callback);
 	auto del = gcnew CallbackDelegate(cvt, &CallbackConverter::Call);
-	::EnumChildWindows(
-		static_cast<HWND>(window.ToPointer()),
-		static_cast<CallbackPointer>(Marshal::GetFunctionPointerForDelegate(del).ToPointer()),
-		static_cast<LPARAM>(param.ToInt64()));
+	GCHandle gch;
+	try
+	{
+		gch = GCHandle::Alloc(del);
+		::EnumChildWindows(
+			static_cast<HWND>(window.ToPointer()),
+			static_cast<CallbackPointer>(Marshal::GetFunctionPointerForDelegate(del).ToPointer()),
+			static_cast<LPARAM>(param.ToInt64()));
+	}
+	finally
+	{
+		if (gch.IsAllocated)
+			gch.Free();
+	}
 }
 
 IntPtr Win32::FindWindow(IntPtr parent, IntPtr child, String^ cls, String^ window)
