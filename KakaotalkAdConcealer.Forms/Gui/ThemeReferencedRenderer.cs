@@ -20,9 +20,9 @@ namespace KakaotalkAdConcealer.Forms.Gui
 			r.Inflate(-2, -4);
 			using var pen = new Pen(ThemeDictionary.TextFillColorPrimary);
 			args.Graphics.DrawLines(pen, new Point[] {
-				new Point(r.Left, r.Top),
-				new Point(r.Right, r.Top + r.Height / 2),
-				new Point(r.Left, r.Top+ r.Height)
+				new(r.Left, r.Top),
+				new(r.Right, r.Top + r.Height / 2),
+				new(r.Left, r.Top+ r.Height)
 			});
 		}
 
@@ -34,9 +34,9 @@ namespace KakaotalkAdConcealer.Forms.Gui
 			r.Inflate(-2, -4);
 			using var pen = new Pen(ThemeDictionary.TextFillColorPrimary);
 			args.Graphics.DrawLines(pen, new Point[] {
-				new Point(r.Left, r.Bottom - r.Height / 2),
-				new Point((int)(r.Left + r.Width / 2.5f),  r.Bottom),
-				new Point(r.Right, r.Top)
+				new(r.Left, r.Bottom - r.Height / 2),
+				new((int)(r.Left + r.Width / 2.5f),  r.Bottom),
+				new(r.Right, r.Top)
 			});
 		}
 
@@ -47,8 +47,8 @@ namespace KakaotalkAdConcealer.Forms.Gui
 			using var pen = new Pen(ThemeDictionary.BaseMedium);
 			args.Graphics.DrawLines(pen, new Point[]
 			{
-				new Point(r.Left + 5, (r.Bottom + r.Top) / 2),
-				new Point(r.Right - 5, (r.Bottom + r.Top) / 2)
+				new(r.Left + 5, (r.Bottom + r.Top) / 2),
+				new(r.Right - 5, (r.Bottom + r.Top) / 2)
 			});
 		}
 
