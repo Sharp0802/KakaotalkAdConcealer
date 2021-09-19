@@ -3,7 +3,6 @@
 #pragma comment(lib, "user32.lib")
 
 #include <Windows.h>
-#include <vcclr.h>
 
 #include "Rect.h"
 #include "ShowingFlag.h"

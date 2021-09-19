@@ -1,7 +1,5 @@
 #pragma once
 
-#include <cstdint>
-
 namespace KakaotalkAdConcealer::Native
 {
 	public enum struct ShowingFlag : int
