@@ -1,6 +1,6 @@
-﻿using KakaotalkAdConcealer.Common;
+﻿using KakaotalkAdConcealer.Core.Common;
 
-namespace KakaotalkAdConcealer.Concealer
+namespace KakaotalkAdConcealer.Core
 {
     /// <summary>
     /// Helper for blocking ads

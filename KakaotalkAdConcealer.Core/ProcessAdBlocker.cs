@@ -1,9 +1,9 @@
 ﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
-using KakaotalkAdConcealer.Common;
+using KakaotalkAdConcealer.Core.Common;
 using KakaotalkAdConcealer.Native;
 
-namespace KakaotalkAdConcealer.Concealer
+namespace KakaotalkAdConcealer.Core
 {
     /// <summary>
     /// Helper for hide ads

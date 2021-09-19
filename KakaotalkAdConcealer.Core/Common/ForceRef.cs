@@ -1,6 +1,7 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 
-namespace KakaotalkAdConcealer.Common
+namespace KakaotalkAdConcealer.Core.Common
 {
     /// <summary>
     /// Force T to be reference type

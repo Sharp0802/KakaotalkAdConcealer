@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace KakaotalkAdConcealer.Common
+namespace KakaotalkAdConcealer.Core.Common
 {
     /// <summary>
     /// GCHandle allocate/delete helper

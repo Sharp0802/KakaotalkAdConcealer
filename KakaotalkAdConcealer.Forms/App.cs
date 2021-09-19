@@ -2,7 +2,7 @@
 using System.Globalization;
 using System.Reflection;
 using System.Windows.Forms;
-using KakaotalkAdConcealer.Concealer;
+using KakaotalkAdConcealer.Core;
 using KakaotalkAdConcealer.Forms.Common;
 using KakaotalkAdConcealer.Forms.Gui;
 using KakaotalkAdConcealer.Forms.Properties;
