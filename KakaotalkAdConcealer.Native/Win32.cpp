@@ -93,7 +93,7 @@ void Win32::ShowWindow(IntPtr window, ShowingFlag flag)
 		static_cast<int32_t>(flag));
 }
 
-IntPtr Win32::SendMessage(IntPtr handle, UINT32 msg)
+IntPtr Win32::SendMessage(IntPtr handle, const UINT32 msg)
 {
 	auto res = ::SendMessageW(
 		static_cast<HWND>(handle.ToPointer()),
