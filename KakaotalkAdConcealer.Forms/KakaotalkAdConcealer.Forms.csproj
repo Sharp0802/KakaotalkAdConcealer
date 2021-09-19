@@ -10,6 +10,12 @@
 		<LangVersion>10.0</LangVersion>
 		<DebugType>embedded</DebugType>
 	</PropertyGroup>
+	
+	<!-- Versioning -->
+	<PropertyGroup>
+		<Version>1.3</Version>
+		<AssemblyVersion>$(Version)</AssemblyVersion>
+	</PropertyGroup>
 
 	<!-- Publish -->
 	<PropertyGroup>
