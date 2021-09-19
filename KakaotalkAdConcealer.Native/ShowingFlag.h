@@ -7,7 +7,7 @@ namespace KakaotalkAdConcealer::Native
 	public enum struct ShowingFlag : int
 	{
 		Hide = 0,
-		ShowNomal = 1,
+		ShowNormal = 1,
 		ShowMinimized = 2,
 		ShowMaximize = 3,
 		ShowNoActivate = 4,
