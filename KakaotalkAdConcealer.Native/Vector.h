@@ -8,7 +8,7 @@ namespace KakaotalkAdConcealer::Native
 		int _x;
 		int _y;
 	public:
-		Vector(const int x, const int y);
+		Vector(int x, int y);
 
 		property int X { int get() { return _x; } }
 		property int Y { int get() { return _y; } }
