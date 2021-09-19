@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
 
 namespace KakaotalkAdConcealer.Core.Common
@@ -27,6 +28,7 @@ namespace KakaotalkAdConcealer.Core.Common
         public override bool Equals(object obj)
             => Equals(this, obj);
 
+        [method: SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
         public override int GetHashCode() 
             => Value.GetHashCode();
     }
