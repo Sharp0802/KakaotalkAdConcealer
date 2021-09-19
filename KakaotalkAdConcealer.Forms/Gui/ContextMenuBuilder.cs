@@ -47,7 +47,7 @@ namespace KakaotalkAdConcealer.Forms.Gui
                 Renderer = new ThemeReferencedRenderer { VerticalPadding = padding },
                 ForeColor = ThemeDictionary.TextFillColorPrimary
             };
-            SystemEvents.UserPreferenceChanged += (sender, args) => menu.ForeColor = ThemeDictionary.TextFillColorPrimary;
+            SystemEvents.UserPreferenceChanged += (_, _) => menu.ForeColor = ThemeDictionary.TextFillColorPrimary;
             var array = Items.ToArray();
             for (int i = 0; i < array.Length; ++i)
             {
