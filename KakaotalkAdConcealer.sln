@@ -9,6 +9,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KakaotalkAdConcealer.Native
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KakaotalkAdConcealer.Core", "KakaotalkAdConcealer.Core\KakaotalkAdConcealer.Core.csproj", "{DB7C8EB0-9CAA-4403-8697-0436258379D9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KakaotalkAdConcealer.Cpp", "KakaotalkAdConcealer.Cpp\KakaotalkAdConcealer.Cpp.vcxproj", "{56A634E4-75E6-4BB7-8D7D-E4E4A86B1EF0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +43,14 @@ Global
 		{DB7C8EB0-9CAA-4403-8697-0436258379D9}.Release|x64.Build.0 = Release|x64
 		{DB7C8EB0-9CAA-4403-8697-0436258379D9}.Release|x86.ActiveCfg = Release|x86
 		{DB7C8EB0-9CAA-4403-8697-0436258379D9}.Release|x86.Build.0 = Release|x86
+		{56A634E4-75E6-4BB7-8D7D-E4E4A86B1EF0}.Debug|x64.ActiveCfg = Debug|x64
+		{56A634E4-75E6-4BB7-8D7D-E4E4A86B1EF0}.Debug|x64.Build.0 = Debug|x64
+		{56A634E4-75E6-4BB7-8D7D-E4E4A86B1EF0}.Debug|x86.ActiveCfg = Debug|Win32
+		{56A634E4-75E6-4BB7-8D7D-E4E4A86B1EF0}.Debug|x86.Build.0 = Debug|Win32
+		{56A634E4-75E6-4BB7-8D7D-E4E4A86B1EF0}.Release|x64.ActiveCfg = Release|x64
+		{56A634E4-75E6-4BB7-8D7D-E4E4A86B1EF0}.Release|x64.Build.0 = Release|x64
+		{56A634E4-75E6-4BB7-8D7D-E4E4A86B1EF0}.Release|x86.ActiveCfg = Release|Win32
+		{56A634E4-75E6-4BB7-8D7D-E4E4A86B1EF0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
